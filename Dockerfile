@@ -18,15 +18,15 @@ RUN buildDeps='ca-certificates \
   && apt-get update \
   && apt-get install -y $buildDeps libc6-i386 --no-install-recommends \
   && echo "===> Install taviso/loadlibrary..." \
-  && git clone https://github.com/taviso/loadlibrary.git /windef/loadlibrary \
+  && git clone https://github.com/taviso/loadlibrary.git /loadlibrary \
   && echo "===> Download 32-bit antimalware update file.." \
   && wget "http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O \
-    /windef/loadlibrary/engine/mpam-fe.exe \
+    /loadlibrary/engine/mpam-fe.exe \
   && cd /windef/loadlibrary/engine \
   && cabextract mpam-fe.exe \
   && rm mpam-fe.exe \
   && ln -s /usr/include/asm-generic /usr/include/asm \
-  && cd /windef/loadlibrary \
+  && cd /loadlibrary \
   && make \
   && echo "===> Install Go..." \
   && ARCH="$(dpkg --print-architecture)" \
