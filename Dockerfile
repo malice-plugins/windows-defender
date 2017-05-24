@@ -1,9 +1,10 @@
-FROM debian:jessie
+FROM ubuntu
 
 LABEL maintainer "https://github.com/blacktop"
 
 ENV GO_VERSION 1.8.1
 
+# COPY mpam-fe.exe /tmp/mpam-fe.exe
 COPY . /go/src/github.com/maliceio/malice-windows-defender
 RUN buildDeps='ca-certificates \
                libc6-dev-i386 \
@@ -16,13 +17,16 @@ RUN buildDeps='ca-certificates \
   && set -x \
   && apt-get update \
   && apt-get install -y $buildDeps libc6-i386 --no-install-recommends \
-  && echo "===> Download 32-bit antimalware update file.." \
-  && wget "http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O /tmp/mpam-fe.exe \
-  && cd /tmp \
-  && cabextract mpam-fe.exe \
   && echo "===> Install taviso/loadlibrary..." \
-  && git clone https://github.com/taviso/loadlibrary.git /tmp/loadlibrary \
-  && cd /tmp/loadlibrary \
+  && git clone https://github.com/taviso/loadlibrary.git /windef/loadlibrary \
+  && echo "===> Download 32-bit antimalware update file.." \
+  && wget "http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O \
+    /windef/loadlibrary/engine/mpam-fe.exe \
+  && cd /windef/loadlibrary/engine \
+  && cabextract mpam-fe.exe \
+  && rm mpam-fe.exe \
+  && ln -s /usr/include/asm-generic /usr/include/asm \
+  && cd /windef/loadlibrary \
   && make \
   && echo "===> Install Go..." \
   && ARCH="$(dpkg --print-architecture)" \
