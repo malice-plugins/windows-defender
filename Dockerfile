@@ -7,9 +7,7 @@ ENV GO_VERSION 1.8.1
 # COPY mpam-fe.exe /tmp/mpam-fe.exe
 COPY . /go/src/github.com/maliceio/malice-windows-defender
 RUN buildDeps='ca-certificates \
-               libreadline-dev:i386 \
-               readline-devel.i686 \
-               glibc-devel.i686 \
+               libreadline-dev \
                libc6-dev-i386 \
                build-essential \
                cabextract \
@@ -19,7 +17,7 @@ RUN buildDeps='ca-certificates \
                wget' \
   && set -x \
   && apt-get update \
-  && apt-get install -y $buildDeps libc6-i386 libgcc.i686 --no-install-recommends \
+  && apt-get install -y $buildDeps libc6-i386 --no-install-recommends \
   && echo "===> Install taviso/loadlibrary..." \
   && git clone https://github.com/taviso/loadlibrary.git /loadlibrary \
   && echo "===> Download 32-bit antimalware update file.." \
