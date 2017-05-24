@@ -11,6 +11,7 @@ RUN buildDeps='ca-certificates \
                build-essential \
                cabextract \
                mercurial \
+               libc-dev \
                git-core \
                unzip \
                wget' \
@@ -22,7 +23,7 @@ RUN buildDeps='ca-certificates \
   && echo "===> Download 32-bit antimalware update file.." \
   && wget "http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O \
     /loadlibrary/engine/mpam-fe.exe \
-  && cd /windef/loadlibrary/engine \
+  && cd /loadlibrary/engine \
   && cabextract mpam-fe.exe \
   && rm mpam-fe.exe \
   && ln -s /usr/include/asm-generic /usr/include/asm \
