@@ -15,8 +15,8 @@ RUN buildDeps='ca-certificates \
   && apt-get update \
   && apt-get install -y $buildDeps libc6-i386 --no-install-recommends \
   && echo "===> Download 32-bit antimalware update file.." \
+  && wget "http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O /tmp/mpam-fe.exe \
   && cd /tmp \
-  && wget "http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" \
   && cabextract mpam-fe.exe \
   && echo "===> Install taviso/loadlibrary..." \
   && git clone https://github.com/taviso/loadlibrary.git /tmp/loadlibrary \
