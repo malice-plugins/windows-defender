@@ -6,12 +6,14 @@ ENV GO_VERSION 1.8.1
 
 COPY . /go/src/github.com/maliceio/malice-windows-defender
 RUN buildDeps='ca-certificates \
+               libc6-dev-i386 \
                build-essential \
                cabextract \
                mercurial \
                git-core \
                unzip \
                wget' \
+  && set -x \
   && apt-get update \
   && apt-get install -y $buildDeps libc6-i386 --no-install-recommends \
   && echo "===> Download 32-bit antimalware update file.." \
