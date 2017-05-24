@@ -11,7 +11,6 @@ RUN buildDeps='ca-certificates \
                build-essential \
                cabextract \
                mercurial \
-               libc-dev \
                git-core \
                unzip \
                wget' \
@@ -26,7 +25,6 @@ RUN buildDeps='ca-certificates \
   && cd /loadlibrary/engine \
   && cabextract mpam-fe.exe \
   && rm mpam-fe.exe \
-  && ln -s /usr/include/asm-generic /usr/include/asm \
   && cd /loadlibrary \
   && make \
   && echo "===> Install Go..." \
