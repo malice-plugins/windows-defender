@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"strings"
 	"time"
 
 	log "github.com/Sirupsen/logrus"
@@ -68,7 +67,7 @@ func AvScan(timeout int) WindowsDefender {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(timeout)*time.Second)
 	defer cancel()
 
-	results, err := ParseWinDefOutput(utils.RunCommand(ctx, "/usr/local/bin/fpscan", "-r", path))
+	results, err := ParseWinDefOutput(utils.RunCommand(ctx, "/loadlibrary/mpclient", path))
 	assert(err)
 
 	return WindowsDefender{
@@ -84,50 +83,6 @@ func ParseWinDefOutput(windefout string, err error) (ResultsData, error) {
 	}
 
 	windef := ResultsData{Infected: false}
-	colonSeparated := []string{}
-
-	lines := strings.Split(windefout, "\n")
-	// Extract Virus string and extract colon separated lines into an slice
-	for _, line := range lines {
-		if len(line) != 0 {
-			if strings.Contains(line, ":") {
-				colonSeparated = append(colonSeparated, line)
-			}
-			if strings.Contains(line, "[Found virus]") {
-				result := extractVirusName(line)
-				if len(result) != 0 {
-					windef.Result = result
-					windef.Infected = true
-				} else {
-					fmt.Println("[ERROR] Virus name extracted was empty: ", result)
-					os.Exit(2)
-				}
-			}
-		}
-	}
-	// fmt.Println(lines)
-
-	// Extract WindowsDefender Details from scan output
-	if len(colonSeparated) != 0 {
-		for _, line := range colonSeparated {
-			if len(line) != 0 {
-				keyvalue := strings.Split(line, ":")
-				if len(keyvalue) != 0 {
-					switch {
-					case strings.Contains(keyvalue[0], "Virus signatures"):
-						windef.Updated = parseUpdatedDate(strings.TrimSpace(keyvalue[1]))
-					case strings.Contains(line, "Engine version"):
-						windef.Engine = strings.TrimSpace(keyvalue[1])
-					}
-				}
-			}
-		}
-	} else {
-		fmt.Println("[ERROR] colonSeparated was empty: ", colonSeparated)
-		os.Exit(2)
-	}
-
-	// windef.Updated = getUpdatedDate()
 
 	return windef, nil
 }
@@ -268,14 +223,14 @@ func main() {
 		},
 	}
 	app.Commands = []cli.Command{
-		{
-			Name:    "update",
-			Aliases: []string{"u"},
-			Usage:   "Update virus definitions",
-			Action: func(c *cli.Context) error {
-				return updateAV(nil)
-			},
-		},
+		// {
+		// 	Name:    "update",
+		// 	Aliases: []string{"u"},
+		// 	Usage:   "Update virus definitions",
+		// 	Action: func(c *cli.Context) error {
+		// 		return updateAV(nil)
+		// 	},
+		// },
 		{
 			Name:  "web",
 			Usage: "Create a Windows Defender scan web service",
