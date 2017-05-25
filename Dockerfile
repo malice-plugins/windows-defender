@@ -7,9 +7,10 @@ ENV GO_VERSION 1.8.1
 # COPY mpam-fe.exe /tmp/mpam-fe.exe
 COPY . /go/src/github.com/maliceio/malice-windows-defender
 RUN buildDeps='ca-certificates \
-               libreadline-dev \
+               lib32readline-dev \
                libc6-dev-i386 \
                build-essential \
+               gcc-multilib \
                cabextract \
                mercurial \
                git-core \
