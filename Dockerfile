@@ -2,7 +2,7 @@ FROM ubuntu
 
 LABEL maintainer "https://github.com/blacktop"
 
-ENV GO_VERSION 1.8.1
+ENV GO_VERSION 1.8.3
 
 # COPY mpam-fe.exe /tmp/mpam-fe.exe
 COPY . /go/src/github.com/maliceio/malice-windows-defender
