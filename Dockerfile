@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM ubuntu
 
 LABEL maintainer "https://github.com/blacktop"
 
