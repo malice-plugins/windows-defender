@@ -66,8 +66,9 @@ func AvScan(timeout int) WindowsDefender {
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(timeout)*time.Second)
 	defer cancel()
-
-	results, err := ParseWinDefOutput(utils.RunCommand(ctx, "/loadlibrary/mpclient", path))
+	os.Chdir("/loadlibrary")
+	results, err := ParseWinDefOutput(utils.RunCommand(ctx, "mpclient", path))
+	os.Chdir("/malware")
 	assert(err)
 
 	return WindowsDefender{
@@ -78,9 +79,23 @@ func AvScan(timeout int) WindowsDefender {
 // ParseWinDefOutput convert windef output into ResultsData struct
 func ParseWinDefOutput(windefout string, err error) (ResultsData, error) {
 
+	// main(): The map file wasn't found, symbols wont be available
+	// main(): usage: ./mpclient [filenames...]
+	// root@d9f8dca1d59e:/loadlibrary# ./mpclient /malware/EICAR
+	// main(): The map file wasn't found, symbols wont be available
+	// main(): Scanning /malware/EICAR...
+	// EngineScanCallback(): Scanning input
+	// EngineScanCallback(): Threat Virus:DOS/EICAR_Test_File identified.
+
 	if err != nil {
 		return ResultsData{}, err
 	}
+
+	log.WithFields(log.Fields{
+		"plugin":   name,
+		"category": category,
+		"path":     path,
+	}).Debug("Windows Defender Output: ", windefout)
 
 	windef := ResultsData{Infected: false}
 
