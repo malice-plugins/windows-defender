@@ -11,4 +11,4 @@ Malice Windows Defender AntiVirus Plugin
 
 https://github.com/taviso/loadlibrary
 
-> **NOTE:** Will not work on Docker for Mac because `CONFIG_MODIFY_LDT_SYSCALL` is not enabled.
+> :warning: **NOTE:** Will not work on Docker for Mac because `CONFIG_MODIFY_LDT_SYSCALL` is not enabled :warning:  
