@@ -10,3 +10,5 @@ Malice Windows Defender AntiVirus Plugin
 [![Docker Image](https://img.shields.io/badge/docker%20image-277%20MB-blue.svg)](https://hub.docker.com/r/malice/windows-defender/)
 
 https://github.com/taviso/loadlibrary
+
+> **NOTE:** Will not work on Docker for Mac because `CONFIG_MODIFY_LDT_SYSCALL` is not enabled.
