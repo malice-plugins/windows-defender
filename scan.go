@@ -77,15 +77,16 @@ func AvScan(timeout int) WindowsDefender {
 	if err != nil {
 		assert(err)
 	}
-	results, err := ParseWinDefOutput(utils.RunCommand(ctx, "./mpclient", path))
-	assert(err)
 
 	log.WithFields(log.Fields{
 		"plugin":   name,
 		"category": category,
 		"pwd":      pwd,
 		"path":     path,
-	}).Debug("mpclient Output: ", results)
+	}).Debug("mpclient paths")
+
+	results, err := ParseWinDefOutput(utils.RunCommand(ctx, "./mpclient", path))
+	assert(err)
 
 	return WindowsDefender{
 		Results: results,

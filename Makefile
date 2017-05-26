@@ -13,9 +13,12 @@ size:
 tags:
 	docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}" $(REPO)/$(NAME)
 
+tar:
+	docker save $(REPO)/$(NAME):$(VERSION) -o wdef.tar
+
 test:
 	docker run --init --rm $(REPO)/$(NAME):$(VERSION)
 	docker run --init --rm $(REPO)/$(NAME):$(VERSION) -V EICAR > results.json
 	cat results.json | jq .
 
-.PHONY: build size tags test
+.PHONY: build size tags test tar
