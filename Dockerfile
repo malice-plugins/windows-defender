@@ -18,18 +18,18 @@ RUN buildDeps='ca-certificates \
                wget' \
   && set -x \
   && dpkg --add-architecture i386 && apt-get update -qq \
-  && apt-get install -y $buildDeps libc6:i386 --no-install-recommends \
+  && apt-get install -y $buildDeps libc6-i386 --no-install-recommends \
   && echo "===> Install taviso/loadlibrary..." \
   && git clone https://github.com/blacktop/loadlibrary.git /loadlibrary \
   && echo "===> Download 32-bit antimalware update file.." \
   && wget "http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O \
     /loadlibrary/engine/mpam-fe.exe \
-  # && mv /tmp/mpam-fe.exe /loadlibrary/engine \
+  && mv /tmp/mpam-fe.exe /loadlibrary/engine \
   && cd /loadlibrary/engine \
   && cabextract mpam-fe.exe \
   && rm mpam-fe.exe \
   && cd /loadlibrary \
-  && make \
+  && make -j2 \
   && echo "===> Install Go..." \
   && ARCH="$(dpkg --print-architecture)" \
   && wget https://storage.googleapis.com/golang/go$GO_VERSION.linux-$ARCH.tar.gz -O /tmp/go.tar.gz \
