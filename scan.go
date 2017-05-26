@@ -66,9 +66,15 @@ func AvScan(timeout int) WindowsDefender {
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(timeout)*time.Second)
 	defer cancel()
-	os.Chdir("/loadlibrary")
-	results, err := ParseWinDefOutput(utils.RunCommand(ctx, "mpclient", path))
-	os.Chdir("/malware")
+
+	// needs to be run from the /loadlibrary folder
+	if err := os.Chdir("/loadlibrary"); err != nil {
+		assert(err)
+	}
+	// will change back to the /malware folder when func returns
+	defer os.Chdir("/malware")
+
+	results, err := ParseWinDefOutput(utils.RunCommand(ctx, "/loadlibrary/mpclient", path))
 	assert(err)
 
 	return WindowsDefender{
