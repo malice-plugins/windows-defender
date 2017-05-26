@@ -85,7 +85,7 @@ func AvScan(timeout int) WindowsDefender {
 		"category": category,
 		"pwd":      pwd,
 		"path":     path,
-	}).Debug("mpclient Output: ", windefout)
+	}).Debug("mpclient Output: ", results)
 
 	return WindowsDefender{
 		Results: results,
