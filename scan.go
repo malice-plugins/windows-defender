@@ -73,9 +73,19 @@ func AvScan(timeout int) WindowsDefender {
 	}
 	// will change back to the /malware folder when func returns
 	defer os.Chdir("/malware")
-
-	results, err := ParseWinDefOutput(utils.RunCommand(ctx, "/loadlibrary/mpclient", path))
+	pwd, err := os.Getwd()
+	if err != nil {
+		assert(err)
+	}
+	results, err := ParseWinDefOutput(utils.RunCommand(ctx, "./mpclient", path))
 	assert(err)
+
+	log.WithFields(log.Fields{
+		"plugin":   name,
+		"category": category,
+		"pwd":      pwd,
+		"path":     path,
+	}).Debug("mpclient Output: ", windefout)
 
 	return WindowsDefender{
 		Results: results,
