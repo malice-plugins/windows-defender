@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"time"
 
@@ -61,6 +62,32 @@ func assert(err error) {
 	}
 }
 
+// RunCommand runs cmd on file
+func RunCommand(ctx context.Context, cmd string, args ...string) (string, error) {
+
+	var c *exec.Cmd
+
+	if ctx != nil {
+		c = exec.CommandContext(ctx, cmd, args...)
+	} else {
+		c = exec.Command(cmd, args...)
+	}
+
+	output, err := c.CombinedOutput()
+	if err != nil {
+		return string(output), err
+	}
+
+	// check for exec context timeout
+	if ctx != nil {
+		if ctx.Err() == context.DeadlineExceeded {
+			return "", fmt.Errorf("Command %s timed out.", cmd)
+		}
+	}
+
+	return string(output), nil
+}
+
 // AvScan performs antivirus scan
 func AvScan(timeout int) WindowsDefender {
 
@@ -85,7 +112,7 @@ func AvScan(timeout int) WindowsDefender {
 		"path":     path,
 	}).Debug("mpclient paths")
 
-	results, err := ParseWinDefOutput(utils.RunCommand(ctx, "./mpclient", path))
+	results, err := ParseWinDefOutput(RunCommand(ctx, "./mpclient", path))
 	assert(err)
 
 	return WindowsDefender{
