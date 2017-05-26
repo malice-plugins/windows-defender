@@ -4,6 +4,9 @@ VERSION=$(shell cat VERSION)
 
 all: build size test
 
+dev:
+		docker build -t $(REPO)/$(NAME):$(VERSION) -f Dockerfile.dev .
+
 build:
 	docker build -t $(REPO)/$(NAME):$(VERSION) .
 
