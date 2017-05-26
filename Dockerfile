@@ -7,8 +7,8 @@ ENV GO_VERSION 1.8.3
 # COPY mpam-fe.exe /tmp/mpam-fe.exe
 COPY . /go/src/github.com/maliceio/malice-windows-defender
 RUN buildDeps='ca-certificates \
-               lib32readline-dev \
-               libc6-dev-i386 \
+               libreadline-dev:i386 \
+               libc6-dev:i386 \
                build-essential \
                gcc-multilib \
                cabextract \
@@ -18,9 +18,10 @@ RUN buildDeps='ca-certificates \
                wget' \
   && set -x \
   && apt-get update \
-  && apt-get install -y $buildDeps libc6-i386 --no-install-recommends \
+  && dpkg --add-architecture i386 \
+  && apt-get install -y $buildDeps libc6:i386 --no-install-recommends \
   && echo "===> Install taviso/loadlibrary..." \
-  && git clone https://github.com/taviso/loadlibrary.git /loadlibrary \
+  && git clone https://github.com/blacktop/loadlibrary.git /loadlibrary \
   && echo "===> Download 32-bit antimalware update file.." \
   && wget "http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O \
     /loadlibrary/engine/mpam-fe.exe \
