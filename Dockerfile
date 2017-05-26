@@ -17,8 +17,7 @@ RUN buildDeps='ca-certificates \
                unzip \
                wget' \
   && set -x \
-  && apt-get update \
-  && dpkg --add-architecture i386 \
+  && dpkg --add-architecture i386 && apt-get update -qq \
   && apt-get install -y $buildDeps libc6:i386 --no-install-recommends \
   && echo "===> Install taviso/loadlibrary..." \
   && git clone https://github.com/blacktop/loadlibrary.git /loadlibrary \
