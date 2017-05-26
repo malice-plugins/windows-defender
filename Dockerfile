@@ -24,7 +24,7 @@ RUN buildDeps='ca-certificates \
   && echo "===> Download 32-bit antimalware update file.." \
   && wget "http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O \
     /loadlibrary/engine/mpam-fe.exe \
-  && mv /tmp/mpam-fe.exe /loadlibrary/engine \
+  # && mv /tmp/mpam-fe.exe /loadlibrary/engine \
   && cd /loadlibrary/engine \
   && cabextract mpam-fe.exe \
   && rm mpam-fe.exe \
