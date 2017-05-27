@@ -52,7 +52,7 @@ Options:
 
 Commands:
   update	Update virus definitions
-  web       Create a windows-defender scan web service  
+  web           Create a windows-defender scan web service  
   help		Shows a list of commands or help for one command
 
 Run 'windows-defender COMMAND --help' for more information on a command.
