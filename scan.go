@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"time"
 
 	log "github.com/Sirupsen/logrus"
@@ -100,17 +101,6 @@ func AvScan(timeout int) WindowsDefender {
 	}
 	// will change back to the /malware folder when func returns
 	defer os.Chdir("/malware")
-	pwd, err := os.Getwd()
-	if err != nil {
-		assert(err)
-	}
-
-	log.WithFields(log.Fields{
-		"plugin":   name,
-		"category": category,
-		"pwd":      pwd,
-		"path":     path,
-	}).Debug("mpclient paths")
 
 	results, err := ParseWinDefOutput(RunCommand(ctx, "./mpclient", path))
 	assert(err)
@@ -123,8 +113,6 @@ func AvScan(timeout int) WindowsDefender {
 // ParseWinDefOutput convert windef output into ResultsData struct
 func ParseWinDefOutput(windefout string, err error) (ResultsData, error) {
 
-	// main(): The map file wasn't found, symbols wont be available
-	// main(): usage: ./mpclient [filenames...]
 	// root@d9f8dca1d59e:/loadlibrary# ./mpclient /malware/EICAR
 	// main(): The map file wasn't found, symbols wont be available
 	// main(): Scanning /malware/EICAR...
@@ -135,13 +123,22 @@ func ParseWinDefOutput(windefout string, err error) (ResultsData, error) {
 		return ResultsData{}, err
 	}
 
+	windef := ResultsData{Infected: false, Engine: Version}
+
 	log.WithFields(log.Fields{
 		"plugin":   name,
 		"category": category,
 		"path":     path,
 	}).Debug("Windows Defender Output: ", windefout)
 
-	windef := ResultsData{Infected: false}
+	parts := strings.Split(windefout, "Scanning input")
+
+	if len(parts[1]) == 0 {
+		return windef, nil
+	}
+	threat := strings.TrimPrefix(windefout, "EngineScanCallback(): ")
+	windef.Infected = true
+	windef.Result = strings.TrimSpace(threat)
 
 	return windef, nil
 }
