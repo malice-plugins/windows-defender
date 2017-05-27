@@ -7,9 +7,9 @@ malice-windows-defender
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/windows-defender.svg)](https://hub.docker.com/r/malice/windows-defender/)
 [![Docker Image](https://img.shields.io/badge/docker%20image-277%20MB-blue.svg)](https://hub.docker.com/r/malice/windows-defender/)
 
-This repository contains a **Dockerfile** of [Bitdefender](http://www.windows-defender.com/business/antivirus-for-unices.html) for [Docker](https://www.docker.io/)'s [trusted build](https://hub.docker.com/r/malice/windows-defender/) published to the public [DockerHub](https://hub.docker.com).
+This repository contains a **Dockerfile** of [Windows Defender](https://www.microsoft.com/en-us/windows/windows-defender) for [Docker](https://www.docker.io/)'s [trusted build](https://hub.docker.com/r/malice/windows-defender/) published to the public [DockerHub](https://hub.docker.com).
 
-> :warning: **NOTE:** Will not work on Docker for Mac because `CONFIG_MODIFY_LDT_SYSCALL` is not enabled :warning:  
+> :warning: **NOTE:** Will not work on **Docker for Mac** because `CONFIG_MODIFY_LDT_SYSCALL` is not enabled :warning:  
 
 ### Dependencies
 
