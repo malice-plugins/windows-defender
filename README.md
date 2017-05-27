@@ -1,19 +1,15 @@
 malice-windows-defender
 =======================
 
-Malice Windows Defender AntiVirus Plugin
-
 [![Circle CI](https://circleci.com/gh/maliceio/malice-windows-defender.png?style=shield)](https://circleci.com/gh/maliceio/malice-windows-defender)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 [![Docker Stars](https://img.shields.io/docker/stars/malice/windows-defender.svg)](https://hub.docker.com/r/malice/windows-defender/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/windows-defender.svg)](https://hub.docker.com/r/malice/windows-defender/)
 [![Docker Image](https://img.shields.io/badge/docker%20image-277%20MB-blue.svg)](https://hub.docker.com/r/malice/windows-defender/)
 
-https://github.com/taviso/loadlibrary
+This repository contains a **Dockerfile** of [Bitdefender](http://www.windows-defender.com/business/antivirus-for-unices.html) for [Docker](https://www.docker.io/)'s [trusted build](https://hub.docker.com/r/malice/windows-defender/) published to the public [DockerHub](https://hub.docker.com).
 
 > :warning: **NOTE:** Will not work on Docker for Mac because `CONFIG_MODIFY_LDT_SYSCALL` is not enabled :warning:  
-
-This repository contains a **Dockerfile** of [Bitdefender](http://www.windows-defender.com/business/antivirus-for-unices.html) for [Docker](https://www.docker.io/)'s [trusted build](https://hub.docker.com/r/malice/windows-defender/) published to the public [DockerHub](https://hub.docker.com).
 
 ### Dependencies
 
@@ -112,6 +108,10 @@ See [`CHANGELOG.md`](https://github.com/maliceio/malice-windows-defender/blob/ma
 [See all contributors on GitHub](https://github.com/maliceio/malice-windows-defender/graphs/contributors).
 
 Please update the [CHANGELOG.md](https://github.com/maliceio/malice-windows-defender/blob/master/CHANGELOG.md) and submit a [Pull Request on GitHub](https://help.github.com/articles/using-pull-requests/).
+
+### Credit
+
+Made possible by the awesome work by [@taviso](https://github.com/taviso/loadlibrary)
 
 ### License
 
