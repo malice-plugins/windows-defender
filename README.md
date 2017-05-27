@@ -23,13 +23,13 @@ This repository contains a **Dockerfile** of [Windows Defender](https://www.micr
 ### Usage
 
 ```
-docker run --rm malice/windows-defender EICAR
+docker run --init --rm malice/windows-defender EICAR
 ```
 
 #### Or link your own malware folder:
 
 ```bash
-$ docker run --rm -v /path/to/malware:/malware:ro malice/windows-defender FILE
+$ docker run --init --rm -v /path/to/malware:/malware:ro malice/windows-defender FILE
 
 Usage: windows-defender [OPTIONS] COMMAND [arg...]
 
@@ -115,10 +115,4 @@ Made possible by the awesome work by [@taviso](https://github.com/taviso/loadlib
 
 ### License
 
-MIT Copyright (c) 2016-2017 **blacktop**
-
-#### Windows Defender
-
-| Infected | Result               | Engine | Updated  |
-| -------- | -------------------- | ------ | -------- |
-| true     | Trojan:Win32/EyeStye | 0.1.0  | 20170527 |
+MIT Copyright (c) 2017 **blacktop**
