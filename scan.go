@@ -131,14 +131,21 @@ func ParseWinDefOutput(windefout string, err error) (ResultsData, error) {
 		"path":     path,
 	}).Debug("Windows Defender Output: ", windefout)
 
-	parts := strings.Split(windefout, "Scanning input")
-
-	if len(parts[1]) == 0 {
-		return windef, nil
+	lines := strings.Split(windefout, "\n")
+	for _, line := range lines {
+		if strings.Contains(line, "Scanning input") {
+			continue
+		}
+		if strings.Contains(line, "EngineScanCallback") {
+			threat := strings.TrimPrefix(strings.TrimSpace(line), "EngineScanCallback():")
+			if len(threat) > 0 {
+				windef.Infected = true
+				windef.Result = strings.TrimSpace(threat)
+			} else {
+				log.Errorf("Umm... len(threat)=%d, threat=%v", len(threat), threat)
+			}
+		}
 	}
-	threat := strings.TrimPrefix(parts[1], "EngineScanCallback(): ")
-	windef.Infected = true
-	windef.Result = strings.TrimSpace(threat)
 
 	return windef, nil
 }
