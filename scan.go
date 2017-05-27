@@ -82,7 +82,7 @@ func RunCommand(ctx context.Context, cmd string, args ...string) (string, error)
 	// check for exec context timeout
 	if ctx != nil {
 		if ctx.Err() == context.DeadlineExceeded {
-			return "", fmt.Errorf("Command %s timed out.", cmd)
+			return "", fmt.Errorf("command %s timed out", cmd)
 		}
 	}
 
@@ -146,7 +146,7 @@ func ParseWinDefOutput(windefout string, err error) (ResultsData, error) {
 			}
 		}
 	}
-
+	windef.Updated = getUpdatedDate()
 	return windef, nil
 }
 
@@ -218,7 +218,7 @@ func webAvScan(w http.ResponseWriter, r *http.Request) {
 	}
 	defer os.Remove(tmpfile.Name()) // clean up
 
-	data, err := ioutil.ReadAll(file)
+	data, _ := ioutil.ReadAll(file)
 
 	if _, err = tmpfile.Write(data); err != nil {
 		log.Fatal(err)
