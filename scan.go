@@ -136,7 +136,7 @@ func ParseWinDefOutput(windefout string, err error) (ResultsData, error) {
 	if len(parts[1]) == 0 {
 		return windef, nil
 	}
-	threat := strings.TrimPrefix(windefout, "EngineScanCallback(): ")
+	threat := strings.TrimPrefix(parts[1], "EngineScanCallback(): ")
 	windef.Infected = true
 	windef.Result = strings.TrimSpace(threat)
 
