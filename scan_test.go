@@ -28,6 +28,9 @@ func parseWindowsDefenderOutput(windefout string) (string, error) {
 		if strings.Contains(line, "EngineScanCallback") {
 			threat := strings.TrimPrefix(strings.TrimSpace(line), "EngineScanCallback():")
 			if len(threat) > 0 {
+				threat = strings.TrimSpace(threat)
+				threat = strings.TrimPrefix(threat, "Threat")
+				threat = strings.TrimSuffix(threat, "identified.")
 				return strings.TrimSpace(threat), nil
 			} else {
 				log.Errorf("Umm... len(threat)=%d, threat=%v", len(threat), threat)
@@ -46,7 +49,7 @@ func TestParseThreat(t *testing.T) {
 		t.Log(err)
 	}
 
-	if !strings.EqualFold(results, "Threat Virus:DOS/EICAR_Test_File identified.") {
+	if !strings.EqualFold(results, "Virus:DOS/EICAR_Test_File") {
 		t.Error("Threat incorrectly extracted")
 		t.Log("results: ", results)
 	}
