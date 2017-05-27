@@ -1,0 +1,8 @@
+{
+    "windows-defender": {
+        "infected": true,
+        "result": "Virus:DOS/EICAR_Test_File",
+        "engine": "0.1.0",
+        "updated": "20170527"
+    }
+}
