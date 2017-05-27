@@ -43,7 +43,7 @@ Author:
 Options:
   --verbose, -V         verbose output
   --table, -t	        output as Markdown table
-  --callback, -c	    POST results to Malice webhook [$MALICE_ENDPOINT]
+  --callback, -c	POST results to Malice webhook [$MALICE_ENDPOINT]
   --proxy, -x	        proxy settings for Malice webhook endpoint [$MALICE_PROXY]
   --timeout value       malice plugin timeout (in seconds) (default: 60) [$MALICE_TIMEOUT]    
   --elasitcsearch value elasitcsearch address for Malice to store results [$MALICE_ELASTICSEARCH]   
