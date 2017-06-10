@@ -40,7 +40,10 @@ RUN buildDeps='ca-certificates \
   && export GOPATH=/go \
   && go version \
   && go get \
-  && go build -ldflags "-X main.Version=$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" -o /bin/avscan \
+  && CGO_ENABLED=0 GOOS=linux go build -a -ldflags "-X main.Version=$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" \
+                                          -ldflags '-extldflags "-static --strip-all"' \
+                                          -o /bin/avscan \
+  && ls -lah /bin/avscan \
   && echo "===> Clean up unnecessary files..." \
   && apt-get purge -y --auto-remove $buildDeps $(apt-mark showauto) \
   && apt-get clean \

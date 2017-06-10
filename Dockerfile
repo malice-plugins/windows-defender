@@ -2,6 +2,11 @@ FROM ubuntu
 
 LABEL maintainer "https://github.com/blacktop"
 
+LABEL malice.plugin.repository = "https://github.com/maliceio/malice-windows-defender.git"
+LABEL malice.plugin.category="av"
+LABEL malice.plugin.mime="*"
+LABEL malice.plugin.docker.engine="linux"
+
 ENV GO_VERSION 1.8.3
 
 COPY . /go/src/github.com/maliceio/malice-windows-defender
@@ -38,7 +43,9 @@ RUN buildDeps='ca-certificates \
   && export GOPATH=/go \
   && go version \
   && go get \
-  && go build -ldflags "-static --strip-all -X main.Version=$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" -o /bin/avscan \
+  && go build -ldflags "-X main.Version=$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" \
+              -o /bin/avscan \
+  && ls -lah /bin/avscan \
   && echo "===> Clean up unnecessary files..." \
   && apt-get purge -y --auto-remove $buildDeps $(apt-mark showauto) \
   && apt-get clean \
