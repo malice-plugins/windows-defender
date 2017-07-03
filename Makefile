@@ -27,9 +27,13 @@ test:
 	cat results.json | jq .
 	rm befb88b89c2eb401900a68e9f5b78764203f2b48264fcc3f7121bf04a57fd408
 
+vagrant:
+	@vagrant up
+	@vagrant ssh
+
 circle:
 	http https://circleci.com/api/v1.1/project/github/${REPO} | jq '.[0].build_num' > .circleci/build_num
 	http "$(shell http https://circleci.com/api/v1.1/project/github/${REPO}/$(shell cat .circleci/build_num)/artifacts${CIRCLE_TOKEN} | jq '.[].url')" > .circleci/SIZE
 	sed -i.bu 's/docker%20image-.*-blue/docker%20image-$(shell cat .circleci/SIZE)-blue/' README.md
 
-.PHONY: build size tags test tar circle
+.PHONY: build size tags test tar circle vagrant
