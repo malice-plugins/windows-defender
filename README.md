@@ -3,11 +3,11 @@ malice-windows-defender
 
 [![Circle CI](https://circleci.com/gh/malice-plugins/windows-defender.png?style=shield)](https://circleci.com/gh/malice-plugins/windows-defender)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
-[![Docker Stars](https://img.shields.io/docker/stars/malice/windows-defender.svg)](https://hub.docker.com/r/malice/windows-defender/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/malice/windows-defender.svg)](https://hub.docker.com/r/malice/windows-defender/)
-[![Docker Image](https://img.shields.io/badge/docker%20image-289%20MB-blue.svg)](https://hub.docker.com/r/malice/windows-defender/)
+[![Docker Stars](https://img.shields.io/docker/stars/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
+[![Docker Pulls](https://img.shields.io/docker/pulls/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
+[![Docker Image](https://img.shields.io/badge/docker%20image-289%20MB-blue.svg)](https://store.docker.com/community/images/malice/windows-defender)
 
-This repository contains a **Dockerfile** of [Windows Defender](https://www.microsoft.com/en-us/windows/windows-defender) for [Docker](https://www.docker.io/)'s [trusted build](https://hub.docker.com/r/malice/windows-defender/) published to the public [DockerHub](https://hub.docker.com).
+This repository contains a **Dockerfile** of [Windows Defender](https://www.microsoft.com/en-us/windows/windows-defender) for [Docker](https://www.docker.io/)'s [trusted build](https://store.docker.com/community/images/malice/windows-defender) published to the public [DockerHub](https://hub.docker.com).
 
 > :warning: **NOTE:** Will not work on **Docker for Mac** because `CONFIG_MODIFY_LDT_SYSCALL` is not enabled :warning:  
 
@@ -18,7 +18,7 @@ This repository contains a **Dockerfile** of [Windows Defender](https://www.micr
 ### Installation
 
 1.	Install [Docker](https://www.docker.io/).
-2.	Download [trusted build](https://hub.docker.com/r/malice/windows-defender/) from public [DockerHub](https://hub.docker.com): `docker pull malice/windows-defender`
+2.	Download [trusted build](https://store.docker.com/community/images/malice/windows-defender) from public [docker store](https://store.docker.com): `docker pull malice/windows-defender`
 
 ### Usage
 
