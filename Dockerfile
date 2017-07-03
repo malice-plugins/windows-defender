@@ -26,7 +26,7 @@ RUN buildDeps='ca-certificates \
   && echo "===> Install taviso/loadlibrary..." \
   && git clone https://github.com/taviso/loadlibrary.git /loadlibrary \
   && echo "===> Download 32-bit antimalware update file.." \
-  && wget "http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O \
+  && wget "https://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O \
     /loadlibrary/engine/mpam-fe.exe \
   && cd /loadlibrary/engine \
   && cabextract mpam-fe.exe \
