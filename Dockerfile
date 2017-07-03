@@ -2,7 +2,7 @@ FROM ubuntu
 
 LABEL maintainer "https://github.com/blacktop"
 
-LABEL malice.plugin.repository = "https://github.com/maliceio/malice-windows-defender.git"
+LABEL malice.plugin.repository = "https://github.com/malice-plugins/windows-defender.git"
 LABEL malice.plugin.category="av"
 LABEL malice.plugin.mime="*"
 LABEL malice.plugin.docker.engine="linux"
