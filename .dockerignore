@@ -1,3 +1,6 @@
+# Ignore .git folder
+.git*
+
 Dockerfile*
 docker-compose*
 .dockerignore

@@ -1,9 +1,11 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
+	"html/template"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -51,6 +53,7 @@ type ResultsData struct {
 	Result   string `json:"result" structs:"result"`
 	Engine   string `json:"engine" structs:"engine"`
 	Updated  string `json:"updated" structs:"updated"`
+	MarkDown string `json:"markdown,omitempty" structs:"markdown,omitempty"`
 }
 
 func assert(err error) {
@@ -176,6 +179,19 @@ func parseUpdatedDate(date string) string {
 // 	err := ioutil.WriteFile("/opt/malice/UPDATED", []byte(t), 0644)
 // 	return err
 // }
+
+func generateMarkDownTable(w WindowsDefender) string {
+	var tplOut bytes.Buffer
+
+	t := template.Must(template.New("windef").Parse(tpl))
+
+	err := t.Execute(&tplOut, w)
+	if err != nil {
+		log.Println("executing template:", err)
+	}
+
+	return tplOut.String()
+}
 
 func printMarkDownTable(windef WindowsDefender) {
 
@@ -323,6 +339,7 @@ func main() {
 			}
 
 			windef := AvScan(c.Int("timeout"))
+			windef.Results.MarkDown = generateMarkDownTable(windef)
 
 			// upsert into Database
 			elasticsearch.InitElasticSearch(elastic)
@@ -334,8 +351,9 @@ func main() {
 			})
 
 			if c.Bool("table") {
-				printMarkDownTable(windef)
+				fmt.Printf(windef.Results.MarkDown)
 			} else {
+				windef.Results.MarkDown = ""
 				windefJSON, err := json.Marshal(windef)
 				assert(err)
 				if c.Bool("post") {

@@ -1,7 +1,7 @@
 malice-windows-defender
 =======================
 
-[![Circle CI](https://circleci.com/gh/maliceio/malice-windows-defender.png?style=shield)](https://circleci.com/gh/maliceio/malice-windows-defender)
+[![Circle CI](https://circleci.com/gh/malice-plugins/windows-defender.png?style=shield)](https://circleci.com/gh/malice-plugins/windows-defender)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 [![Docker Stars](https://img.shields.io/docker/stars/malice/windows-defender.svg)](https://hub.docker.com/r/malice/windows-defender/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/windows-defender.svg)](https://hub.docker.com/r/malice/windows-defender/)
