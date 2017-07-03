@@ -87,6 +87,6 @@ Vagrant.configure("2") do |config|
     curl -s https://raw.githubusercontent.com/ZZROTDesign/docker-clean/v2.0.4/docker-clean | sudo tee /usr/local/bin/docker-clean > /dev/null
     sudo chmod +x /usr/local/bin/docker-clean
     echo "Installing windows-defender image ================"
-    docker load /vagrant/wdef.tar
+    docker load -i /vagrant/wdef.tar
   SHELL
 end

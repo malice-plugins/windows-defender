@@ -6,19 +6,19 @@ VERSION=$(shell cat VERSION)
 all: build size test
 
 dev:
-	docker build -t $(REPO)/$(NAME):dev -f Dockerfile.dev .
+	docker build -t $(ORG)/$(NAME):dev -f Dockerfile.dev .
 
 build:
-	docker build -t $(REPO)/$(NAME):$(VERSION) .
+	docker build -t $(ORG)/$(NAME):$(VERSION) .
 
 size:
-	sed -i.bu 's/docker image-.*-blue/docker image-$(shell docker images --format "{{.Size}}" $(REPO)/$(NAME):$(VERSION))-blue/' README.md
+	sed -i.bu 's/docker image-.*-blue/docker image-$(shell docker images --format "{{.Size}}" $(ORG)/$(NAME):$(VERSION))-blue/' README.md
 
 tags:
-	docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}" $(REPO)/$(NAME)
+	docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}" $(ORG)/$(NAME)
 
 tar: build
-	docker save $(REPO)/$(NAME):$(VERSION) -o wdef.tar
+	docker save $(ORG)/$(NAME):$(VERSION) -o wdef.tar
 
 test:
 	docker run --init --rm $(ORG)/$(NAME):$(VERSION) --help
