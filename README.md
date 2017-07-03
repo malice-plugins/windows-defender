@@ -5,7 +5,7 @@ malice-windows-defender
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 [![Docker Stars](https://img.shields.io/docker/stars/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
-[![Docker Image](https://img.shields.io/badge/docker%20image-289%20MB-blue.svg)](https://store.docker.com/community/images/malice/windows-defender)
+[![Docker Image](https://img.shields.io/badge/docker%20image-288MB-blue.svg)](https://store.docker.com/community/images/malice/windows-defender)
 
 This repository contains a **Dockerfile** of [Windows Defender](https://www.microsoft.com/en-us/windows/windows-defender) for [Docker](https://www.docker.io/)'s [trusted build](https://store.docker.com/community/images/malice/windows-defender) published to the public [DockerHub](https://hub.docker.com).
 
