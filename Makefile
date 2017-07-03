@@ -1,4 +1,5 @@
-REPO=malice
+REPO=malice-plugins/windows-defender
+ORG=malice
 NAME=windows-defender
 VERSION=$(shell cat VERSION)
 
@@ -16,7 +17,7 @@ size:
 tags:
 	docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}" $(REPO)/$(NAME)
 
-tar:
+tar: build
 	docker save $(REPO)/$(NAME):$(VERSION) -o wdef.tar
 
 test:
@@ -27,7 +28,7 @@ test:
 	cat results.json | jq .
 	rm befb88b89c2eb401900a68e9f5b78764203f2b48264fcc3f7121bf04a57fd408
 
-vagrant:
+vagrant: tar
 	@vagrant up
 	@vagrant ssh
 
