@@ -1,9 +1,9 @@
 #!/bin/bash
 
 echo "===> Installing deps..."
-apt-get update -q && apt-get install -y wget cabextract
+apt-get update -qq && apt-get install -yq wget cabextract
 echo "===> Download 32-bit antimalware update file.."
-wget "https://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O /loadlibrary/engine/mpam-fe.exe
+wget --progress=bar:force "https://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O /loadlibrary/engine/mpam-fe.exe
 cd /loadlibrary/engine
 cabextract mpam-fe.exe
 echo "===> Clean up unnecessary files..."

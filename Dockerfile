@@ -26,7 +26,7 @@ RUN buildDeps='ca-certificates \
   && echo "===> Install taviso/loadlibrary..." \
   && git clone https://github.com/taviso/loadlibrary.git /loadlibrary \
   && echo "===> Download 32-bit antimalware update file.." \
-  && wget "https://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O \
+  && wget --progress=bar:force "https://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O \
     /loadlibrary/engine/mpam-fe.exe \
   && cd /loadlibrary/engine \
   && cabextract mpam-fe.exe \
@@ -35,7 +35,7 @@ RUN buildDeps='ca-certificates \
   && make -j2 \
   && echo "===> Install Go..." \
   && ARCH="$(dpkg --print-architecture)" \
-  && wget https://storage.googleapis.com/golang/go$GO_VERSION.linux-$ARCH.tar.gz -O /tmp/go.tar.gz \
+  && wget --progress=bar:force https://storage.googleapis.com/golang/go$GO_VERSION.linux-$ARCH.tar.gz -O /tmp/go.tar.gz \
   && tar -C /usr/local -xzf /tmp/go.tar.gz \
   && export PATH=$PATH:/usr/local/go/bin \
   && echo "===> Building avscan Go binary..." \
