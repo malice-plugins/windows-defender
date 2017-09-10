@@ -171,14 +171,14 @@ func parseUpdatedDate(date string) string {
 	return fmt.Sprintf("%d%02d%02d", t.Year(), t.Month(), t.Day())
 }
 
-// func updateAV(ctx context.Context) error {
-// 	fmt.Println("Updating F-PROT...")
-// 	fmt.Println(utils.RunCommand(ctx, "/opt/f-prot/fpupdate"))
-// 	// Update UPDATED file
-// 	t := time.Now().Format("20060102")
-// 	err := ioutil.WriteFile("/opt/malice/UPDATED", []byte(t), 0644)
-// 	return err
-// }
+func updateAV(ctx context.Context) error {
+	fmt.Println("Updating Windows Defender...")
+	fmt.Println(utils.RunCommand(ctx, "/opt/malice/update"))
+	// Update UPDATED file
+	t := time.Now().Format("20060102")
+	err := ioutil.WriteFile("/opt/malice/UPDATED", []byte(t), 0644)
+	return err
+}
 
 func generateMarkDownTable(w WindowsDefender) string {
 	var tplOut bytes.Buffer
@@ -305,14 +305,14 @@ func main() {
 		},
 	}
 	app.Commands = []cli.Command{
-		// {
-		// 	Name:    "update",
-		// 	Aliases: []string{"u"},
-		// 	Usage:   "Update virus definitions",
-		// 	Action: func(c *cli.Context) error {
-		// 		return updateAV(nil)
-		// 	},
-		// },
+		{
+			Name:    "update",
+			Aliases: []string{"u"},
+			Usage:   "Update virus definitions",
+			Action: func(c *cli.Context) error {
+				return updateAV(nil)
+			},
+		},
 		{
 			Name:  "web",
 			Usage: "Create a Windows Defender scan web service",

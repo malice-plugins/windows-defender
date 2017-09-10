@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:xenial
 
 LABEL maintainer "https://github.com/blacktop"
 
@@ -53,6 +53,8 @@ RUN buildDeps='ca-certificates \
 
 # Add EICAR Test Virus File to malware folder
 ADD http://www.eicar.org/download/eicar.com.txt /malware/EICAR
+RUN  mkdir -p /opt/malice
+COPY update.sh /opt/malice/update
 
 WORKDIR /malware
 

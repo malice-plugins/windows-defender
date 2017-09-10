@@ -20,6 +20,9 @@ tags:
 tar: build
 	docker save $(ORG)/$(NAME):$(VERSION) -o wdef.tar
 
+update:
+	@docker run  --rm $(ORG)/$(NAME):$(VERSION) update
+
 test:
 	docker run --init --rm $(ORG)/$(NAME):$(VERSION) --help
 	test -f befb88b89c2eb401900a68e9f5b78764203f2b48264fcc3f7121bf04a57fd408 || wget https://github.com/maliceio/malice-av/raw/master/samples/befb88b89c2eb401900a68e9f5b78764203f2b48264fcc3f7121bf04a57fd408
