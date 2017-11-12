@@ -3,15 +3,16 @@ jobs:
   build:
     working_directory: /app
     docker:
-      - image: docker:17.07.0-ce-git
+      - image: docker:17.10.0-ce
     steps:
       - checkout
       - setup_remote_docker:
-          version: 17.07.0-ce
+          version: 17.10.0-ce
       - run:
           name: Install dependencies
           command: |
-            apk add --no-cache jq curl
+            apk add --no-cache curl jq
+      - restore_cache:
           keys:
             - v1-{{ .Branch }}
           paths:
@@ -49,7 +50,7 @@ jobs:
             curl -L -o /tmp/sample https://github.com/maliceio/malice-av/raw/master/samples/befb88b89c2eb401900a68e9f5b78764203f2b48264fcc3f7121bf04a57fd408
             docker create -v /malware --name malvol alpine:3.6 /bin/true
             docker cp /tmp/sample malvol:/malware
-            docker run --rm --volumes-from malvol app -t sample            
+            docker run --rm --volumes-from malvol app -t sample
             docker run --rm --volumes-from malvol app -V sample | jq .
       - run:
           name: Run update test

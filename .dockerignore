@@ -1,12 +1,18 @@
 # Ignore .git folder
 .git*
-
-Dockerfile*
-docker-compose*
-.dockerignore
-.git
 .gitignore
+
+docs*
+.circleci*
+.vscode*
+
 README.md
+README.md.bu
+NOTES.md
 LICENSE
-.vscode
+Makefile
+CHANGELOG.md
+
 *.tar
+seccomp.json
+Vagrantfile

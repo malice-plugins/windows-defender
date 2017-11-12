@@ -5,15 +5,17 @@ malice-windows-defender
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 [![Docker Stars](https://img.shields.io/docker/stars/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
-[![Docker Image](https://img.shields.io/badge/docker%20image-288MB-blue.svg)](https://store.docker.com/community/images/malice/windows-defender)
+[![Docker Image](https://img.shields.io/badge/docker%20image-267MB-blue.svg)](https://store.docker.com/community/images/malice/windows-defender)
 
-This repository contains a **Dockerfile** of [Windows Defender](https://www.microsoft.com/en-us/windows/windows-defender) for [Docker](https://www.docker.io/)'s [trusted build](https://store.docker.com/community/images/malice/windows-defender) published to the public [DockerHub](https://hub.docker.com).
+> This repository contains a **Dockerfile** of [Windows Defender](https://www.microsoft.com/en-us/windows/windows-defender) for the malice plugin **malice/windows-defender**..
 
-> :warning: **NOTE:** Will not work on **Docker for Mac** because `CONFIG_MODIFY_LDT_SYSCALL` is not enabled :warning:  
+:warning: **NOTE:** Will not work on **Docker for Mac** because `CONFIG_MODIFY_LDT_SYSCALL` is not enabled :warning:  
+
+___
 
 ### Dependencies
 
--	[ubuntu (*118 MB*\)](https://hub.docker.com/_/ubuntu/)
+-	[ubuntu:xenial (*118 MB*\)](https://hub.docker.com/_/ubuntu/)
 
 ### Installation
 
@@ -35,7 +37,7 @@ Usage: windows-defender [OPTIONS] COMMAND [arg...]
 
 Malice Windows Defender AntiVirus Plugin
 
-Version: v0.1.0, BuildTime: 20170527
+Version: v0.1.0, BuildTime: 20171112
 
 Author:
   blacktop - <https://github.com/blacktop>
@@ -70,20 +72,20 @@ This will output to stdout and POST to malice results API webhook endpoint.
     "infected": true,
     "result": "Virus:DOS/EICAR_Test_File",
     "engine": "0.1.0",
-    "updated": "20170527"
+    "updated": "20171112"
   }
 }
 ```
 
-### STDOUT (Markdown Table):
+### Markdown:
 
 ---
 
 #### Windows Defender
 
 | Infected | Result                    | Engine | Updated  |
-| -------- | ------------------------- | ------ | -------- |
-| true     | Virus:DOS/EICAR_Test_File | 0.1.0  | 20170527 |
+|:---------|:--------------------------|:-------|:---------|
+| true     | Virus:DOS/EICAR_Test_File | 0.1.0  | 20171112 |
 
 ---
 
@@ -91,7 +93,7 @@ Documentation
 -------------
 
 -	[To write results to ElasticSearch](https://github.com/maliceio/malice-windows-defender/blob/master/docs/elasticsearch.md)
--	[To create a Bitdefender scan micro-service](https://github.com/maliceio/malice-windows-defender/blob/master/docs/web.md)
+-	[To create a Windows Defender scan micro-service](https://github.com/maliceio/malice-windows-defender/blob/master/docs/web.md)
 -	[To post results to a webhook](https://github.com/maliceio/malice-windows-defender/blob/master/docs/callback.md)
 -	[To update the AV definitions](https://github.com/maliceio/malice-windows-defender/blob/master/docs/update.md)
 

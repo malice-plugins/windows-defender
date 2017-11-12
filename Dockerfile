@@ -5,9 +5,9 @@ LABEL maintainer "https://github.com/blacktop"
 LABEL malice.plugin.repository = "https://github.com/malice-plugins/windows-defender.git"
 LABEL malice.plugin.category="av"
 LABEL malice.plugin.mime="*"
-LABEL malice.plugin.docker.engine="linux"
+LABEL malice.plugin.docker.engine="*"
 
-ENV GO_VERSION 1.8.3
+ENV GO_VERSION 1.9.2
 
 COPY . /go/src/github.com/maliceio/malice-windows-defender
 RUN buildDeps='ca-certificates \
