@@ -7,7 +7,7 @@ malice-windows-defender
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
 [![Docker Image](https://img.shields.io/badge/docker%20image-267MB-blue.svg)](https://store.docker.com/community/images/malice/windows-defender)
 
-> This repository contains a **Dockerfile** of [Windows Defender](https://www.microsoft.com/en-us/windows/windows-defender) for the malice plugin **malice/windows-defender**..
+> This repository contains a **Dockerfile** of [Windows Defender](https://www.microsoft.com/en-us/windows/windows-defender) for the malice plugin **malice/windows-defender**
 
 ___
 
