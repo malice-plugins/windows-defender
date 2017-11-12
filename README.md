@@ -9,8 +9,6 @@ malice-windows-defender
 
 > This repository contains a **Dockerfile** of [Windows Defender](https://www.microsoft.com/en-us/windows/windows-defender) for the malice plugin **malice/windows-defender**..
 
-:warning: **NOTE:** Will not work on **Docker for Mac** because `CONFIG_MODIFY_LDT_SYSCALL` is not enabled :warning:  
-
 ___
 
 ### Dependencies
