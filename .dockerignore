@@ -2,9 +2,10 @@
 .git*
 .gitignore
 
-docs*
 .circleci*
-.vscode*
+docs*
+vendor*
+tests*
 
 README.md
 README.md.bu

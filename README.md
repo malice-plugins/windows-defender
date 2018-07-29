@@ -1,5 +1,4 @@
-malice-windows-defender
-=======================
+# windows-defender
 
 [![Circle CI](https://circleci.com/gh/malice-plugins/windows-defender.png?style=shield)](https://circleci.com/gh/malice-plugins/windows-defender)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
@@ -9,16 +8,16 @@ malice-windows-defender
 
 > This repository contains a **Dockerfile** of [Windows Defender](https://www.microsoft.com/en-us/windows/windows-defender) for the malice plugin **malice/windows-defender**
 
-___
+---
 
 ### Dependencies
 
--	[ubuntu:xenial (*118 MB*\)](https://hub.docker.com/_/ubuntu/)
+- [ubuntu:xenial (_118 MB_\)](https://hub.docker.com/_/ubuntu/)
 
 ### Installation
 
-1.	Install [Docker](https://www.docker.io/).
-2.	Download [trusted build](https://store.docker.com/community/images/malice/windows-defender) from public [docker store](https://store.docker.com): `docker pull malice/windows-defender`
+1.  Install [Docker](https://www.docker.io/).
+2.  Download [trusted build](https://store.docker.com/community/images/malice/windows-defender) from public [docker store](https://store.docker.com): `docker pull malice/windows-defender`
 
 ### Usage
 
@@ -45,14 +44,14 @@ Options:
   --table, -t	        output as Markdown table
   --callback, -c	POST results to Malice webhook [$MALICE_ENDPOINT]
   --proxy, -x	        proxy settings for Malice webhook endpoint [$MALICE_PROXY]
-  --timeout value       malice plugin timeout (in seconds) (default: 60) [$MALICE_TIMEOUT]    
-  --elasitcsearch value elasitcsearch address for Malice to store results [$MALICE_ELASTICSEARCH]   
+  --timeout value       malice plugin timeout (in seconds) (default: 60) [$MALICE_TIMEOUT]
+  --elasitcsearch value elasitcsearch address for Malice to store results [$MALICE_ELASTICSEARCH]
   --help, -h	        show help
   --version, -v	        print the version
 
 Commands:
   update	Update virus definitions
-  web           Create a windows-defender scan web service  
+  web           Create a windows-defender scan web service
   help		Shows a list of commands or help for one command
 
 Run 'windows-defender COMMAND --help' for more information on a command.
@@ -62,7 +61,7 @@ This will output to stdout and POST to malice results API webhook endpoint.
 
 ## Sample Output
 
-### JSON:
+### [JSON](https://github.com/malice-plugins/windows-defender/blob/master/docs/results.json)
 
 ```json
 {
@@ -75,44 +74,43 @@ This will output to stdout and POST to malice results API webhook endpoint.
 }
 ```
 
-### Markdown:
+### [Markdown](https://github.com/malice-plugins/windows-defender/blob/master/docs/SAMPLE.md)
 
 ---
 
 #### Windows Defender
 
 | Infected | Result                    | Engine | Updated  |
-|:---------|:--------------------------|:-------|:---------|
+| :------- | :------------------------ | :----- | :------- |
 | true     | Virus:DOS/EICAR_Test_File | 0.1.0  | 20171112 |
 
 ---
 
-Documentation
--------------
+## Documentation
 
--	[To write results to ElasticSearch](https://github.com/maliceio/malice-windows-defender/blob/master/docs/elasticsearch.md)
--	[To create a Windows Defender scan micro-service](https://github.com/maliceio/malice-windows-defender/blob/master/docs/web.md)
--	[To post results to a webhook](https://github.com/maliceio/malice-windows-defender/blob/master/docs/callback.md)
--	[To update the AV definitions](https://github.com/maliceio/malice-windows-defender/blob/master/docs/update.md)
+- [To write results to ElasticSearch](https://github.com/malice-plugins/windows-defender/blob/master/docs/elasticsearch.md)
+- [To create a Windows Defender scan micro-service](https://github.com/malice-plugins/windows-defender/blob/master/docs/web.md)
+- [To post results to a webhook](https://github.com/malice-plugins/windows-defender/blob/master/docs/callback.md)
+- [To update the AV definitions](https://github.com/malice-plugins/windows-defender/blob/master/docs/update.md)
 
-### Issues
+## Issues
 
-Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/maliceio/malice-windows-defender/issues/new).
+Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/malice-plugins/windows-defender/issues/new).
 
-### CHANGELOG
+## CHANGELOG
 
-See [`CHANGELOG.md`](https://github.com/maliceio/malice-windows-defender/blob/master/CHANGELOG.md)
+See [`CHANGELOG.md`](https://github.com/malice-plugins/windows-defender/blob/master/CHANGELOG.md)
 
-### Contributing
+## Contributing
 
-[See all contributors on GitHub](https://github.com/maliceio/malice-windows-defender/graphs/contributors).
+[See all contributors on GitHub](https://github.com/malice-plugins/windows-defender/graphs/contributors).
 
-Please update the [CHANGELOG.md](https://github.com/maliceio/malice-windows-defender/blob/master/CHANGELOG.md) and submit a [Pull Request on GitHub](https://help.github.com/articles/using-pull-requests/).
+Please update the [CHANGELOG.md](https://github.com/malice-plugins/windows-defender/blob/master/CHANGELOG.md) and submit a [Pull Request on GitHub](https://help.github.com/articles/using-pull-requests/).
 
-### Credit
+## Credit
 
 Made possible by the awesome work by [@taviso](https://github.com/taviso/loadlibrary)
 
-### License
+## License
 
 MIT Copyright (c) 2017 **blacktop**

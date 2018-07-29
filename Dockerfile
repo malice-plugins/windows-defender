@@ -7,19 +7,19 @@ LABEL malice.plugin.category="av"
 LABEL malice.plugin.mime="*"
 LABEL malice.plugin.docker.engine="*"
 
-ENV GO_VERSION 1.9.2
+ENV GO_VERSION 1.10.3
 
 COPY . /go/src/github.com/maliceio/malice-windows-defender
 RUN buildDeps='ca-certificates \
-               libreadline-dev:i386 \
-               libc6-dev:i386 \
-               build-essential \
-               gcc-multilib \
-               cabextract \
-               mercurial \
-               git-core \
-               unzip \
-               wget' \
+  libreadline-dev:i386 \
+  libc6-dev:i386 \
+  build-essential \
+  gcc-multilib \
+  cabextract \
+  mercurial \
+  git-core \
+  unzip \
+  wget' \
   && set -x \
   && dpkg --add-architecture i386 && apt-get update -qq \
   && apt-get install -y $buildDeps libc6-i386 --no-install-recommends \
@@ -27,7 +27,7 @@ RUN buildDeps='ca-certificates \
   && git clone https://github.com/taviso/loadlibrary.git /loadlibrary \
   && echo "===> Download 32-bit antimalware update file.." \
   && wget --progress=bar:force "https://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O \
-    /loadlibrary/engine/mpam-fe.exe \
+  /loadlibrary/engine/mpam-fe.exe \
   && cd /loadlibrary/engine \
   && cabextract mpam-fe.exe \
   && rm mpam-fe.exe \
@@ -43,8 +43,8 @@ RUN buildDeps='ca-certificates \
   && export GOPATH=/go \
   && go version \
   && go get \
-  && go build -ldflags "-X main.Version=$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" \
-              -o /bin/avscan \
+  && go build -ldflags "-s -w -X main.Version=$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" \
+  -o /bin/avscan \
   && ls -lah /bin/avscan \
   && echo "===> Clean up unnecessary files..." \
   && apt-get purge -y --auto-remove $buildDeps $(apt-mark showauto) \
@@ -53,6 +53,7 @@ RUN buildDeps='ca-certificates \
 
 # Add EICAR Test Virus File to malware folder
 ADD http://www.eicar.org/download/eicar.com.txt /malware/EICAR
+
 RUN  mkdir -p /opt/malice
 COPY update.sh /opt/malice/update
 
