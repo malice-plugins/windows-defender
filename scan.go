@@ -41,12 +41,12 @@ const (
 
 type pluginResults struct {
 	ID   string      `json:"id" structs:"id,omitempty"`
-	Data ResultsData `json:"windows-defender" structs:"windows-defender"`
+	Data ResultsData `json:"windows_defender" structs:"windows_defender"`
 }
 
 // WindowsDefender json object
 type WindowsDefender struct {
-	Results ResultsData `json:"windows-defender"`
+	Results ResultsData `json:"windows_defender" structs:"windows_defender"`
 }
 
 // ResultsData json object
@@ -61,7 +61,7 @@ type ResultsData struct {
 func assert(err error) {
 	if err != nil {
 		log.WithFields(log.Fields{
-			"plugin":   name,
+			"plugin":   strings.Replace(name, "-", "_", -1),
 			"category": category,
 			"path":     path,
 		}).Fatal(err)
@@ -131,7 +131,7 @@ func ParseWinDefOutput(windefout string, err error) (ResultsData, error) {
 	windef := ResultsData{Infected: false, Engine: Version}
 
 	log.WithFields(log.Fields{
-		"plugin":   name,
+		"plugin":   strings.Replace(name, "-", "_", -1),
 		"category": category,
 		"path":     path,
 	}).Debug("Windows Defender Output: ", windefout)
@@ -267,7 +267,7 @@ func main() {
 	cli.AppHelpTemplate = utils.AppHelpTemplate
 	app := cli.NewApp()
 
-	app.Name = "windows-defender"
+	app.Name = name
 	app.Author = "blacktop"
 	app.Email = "https://github.com/blacktop"
 	app.Version = Version + ", BuildTime: " + BuildTime
@@ -351,7 +351,7 @@ func main() {
 				}
 				err = es.StorePluginResults(database.PluginResults{
 					ID:       utils.Getopt("MALICE_SCANID", utils.GetSHA256(path)),
-					Name:     name,
+					Name:     strings.Replace(name, "-", "_", -1),
 					Category: category,
 					Data:     structs.Map(windef.Results),
 				})

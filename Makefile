@@ -73,7 +73,7 @@ test_elastic: start_elasticsearch malware
 test_markdown: test_elastic
 	@echo "===> ${NAME} test_markdown"
 	# http localhost:9200/malice/_search query:=@docs/query.json | jq . > docs/elastic.json
-	cat docs/elastic.json | jq -r '.hits.hits[] ._source.plugins.${CATEGORY}.${NAME}.markdown' > docs/SAMPLE.md
+	cat docs/elastic.json | jq -r '.hits.hits[] ._source.plugins.$(CATEGORY).$(shell echo ${NAME} | tr - _).markdown' > docs/SAMPLE.md
 
 .PHONY: circle
 circle: ci-size

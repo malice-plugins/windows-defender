@@ -1,5 +1,5 @@
 #### Windows Defender
-| Infected      | Result      | Engine      | Updated      |
-|:-------------:|:-----------:|:-----------:|:------------:|
-| true | Backdoor:Win32/Lecna!dha | 0.1.0 | 20171112 |
 
+| Infected |          Result          | Engine | Updated  |
+| :------: | :----------------------: | :----: | :------: |
+|   true   | Backdoor:Win32/Lecna!dha | 0.1.0  | 20180729 |
