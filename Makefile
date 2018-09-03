@@ -3,10 +3,11 @@ ORG=malice
 NAME=windows-defender
 CATEGORY=av
 VERSION=$(shell cat VERSION)
+
 MALWARE=tests/malware
+NOT_MALWARE=tests/not.malware
 
-
-all: build size tag test test_markdown
+all: build size tag test_all
 
 .PHONY: build
 build:
@@ -40,12 +41,11 @@ vagrant: tar
 .PHONY: start_elasticsearch
 start_elasticsearch:
 ifeq ("$(shell docker inspect -f {{.State.Running}} elasticsearch)", "true")
-	@echo "===> elasticsearch already running"
-else
-	@echo "===> Starting elasticsearch"
+	@echo "===> elasticsearch already running.  Stopping now..."
 	@docker rm -f elasticsearch || true
-	@docker run --init -d --name elasticsearch -p 9200:9200 malice/elasticsearch:6.3; sleep 10
 endif
+	@echo "===> Starting elasticsearch"
+	@docker run --init -d --name elasticsearch -p 9200:9200 malice/elasticsearch:6.4; sleep 15
 
 .PHONY: malware
 malware:
@@ -53,6 +53,9 @@ ifeq (,$(wildcard $(MALWARE)))
 	wget https://github.com/maliceio/malice-av/raw/master/samples/befb88b89c2eb401900a68e9f5b78764203f2b48264fcc3f7121bf04a57fd408 -O $(MALWARE)
 	cd tests; echo "TEST" > not.malware
 endif
+
+.PHONY: test_all
+test_all: test test_elastic test_markdown test_web
 
 .PHONY: test
 test: malware
@@ -64,16 +67,29 @@ test: malware
 .PHONY: test_elastic
 test_elastic: start_elasticsearch malware
 	@echo "===> ${NAME} test_elastic found"
-	docker run --rm --link elasticsearch -e MALICE_ELASTICSEARCH=elasticsearch -v $(PWD):/malware $(ORG)/$(NAME):$(VERSION) -V $(MALWARE)
-	# @echo "===> ${NAME} test_elastic NOT found"
-	# docker run --rm --link elasticsearch -e MALICE_ELASTICSEARCH=elasticsearch $(ORG)/$(NAME):$(VERSION) -V --api ${MALICE_VT_API} lookup $(MISSING_HASH)
+	docker run --rm --link elasticsearch -e MALICE_ELASTICSEARCH_URL=http://elasticsearch:9200 -v $(PWD):/malware $(ORG)/$(NAME):$(VERSION) -V $(MALWARE)
+	@echo "===> ${NAME} test_elastic NOT found"
+	docker run --rm --link elasticsearch -e MALICE_ELASTICSEARCH_URL=http://elasticsearch:9200 -v $(PWD):/malware $(ORG)/$(NAME):$(VERSION) -V $(NOT_MALWARE)
 	http localhost:9200/malice/_search | jq . > docs/elastic.json
 
 .PHONY: test_markdown
-test_markdown: test_elastic
+test_markdown:
 	@echo "===> ${NAME} test_markdown"
 	# http localhost:9200/malice/_search query:=@docs/query.json | jq . > docs/elastic.json
-	cat docs/elastic.json | jq -r '.hits.hits[] ._source.plugins.$(CATEGORY).$(shell echo ${NAME} | tr - _).markdown' > docs/SAMPLE.md
+	cat docs/elastic.json | jq -r '.hits.hits[] ._source.plugins.${CATEGORY}.windows_defender.markdown' > docs/SAMPLE.md
+
+.PHONY: test_web
+test_web: malware stop
+	@echo "===> Starting web service"
+	@docker run -d --name $(NAME) -p 3993:3993 $(ORG)/$(NAME):$(VERSION) web
+	http -f localhost:3993/scan malware@$(MALWARE)
+	@echo "===> Stopping web service"
+	@docker logs $(NAME)
+	@docker rm -f $(NAME)
+
+.PHONY: stop
+stop: ## Kill running docker containers
+	@docker rm -f $(NAME) || true
 
 .PHONY: circle
 circle: ci-size

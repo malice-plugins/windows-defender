@@ -35,7 +35,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:4429b79947e9af3ccf562cdde4ca61934c7e229726a5afd6527151a91f636a5d"
+  digest = "1:aa3d8d42865c42626b5c1add193692d045b3188b1479f0a0a88690d21fe20083"
   name = "github.com/mailru/easyjson"
   packages = [
     ".",
@@ -44,12 +44,12 @@
     "jwriter",
   ]
   pruneopts = "UT"
-  revision = "d5012789d6659eeed305f54c1b1542e7b65829e6"
+  revision = "60711f1a8329503b04e1c88535f419d0bb440bff"
 
 [[projects]]
   branch = "master"
-  digest = "1:9a5292fb320841ee483ec14785239f0fff56dd17b86ffaef533c551489e335f1"
-  name = "github.com/malice-plugins/go-plugin-utils"
+  digest = "1:dd9d87c99c559d9f7a13bde1f143c5b8d03edd177bc2d4353d800c71d70250ae"
+  name = "github.com/malice-plugins/pkgs"
   packages = [
     "clitable",
     "database",
@@ -57,15 +57,15 @@
     "utils",
   ]
   pruneopts = "UT"
-  revision = "7663d6b3aa7fe4667f78de3e5ea8951566817682"
+  revision = "8b60ba5208b1f40281d09751d83dafd0e7db6e15"
 
 [[projects]]
-  digest = "1:e2d1d410fb367567c2b53ed9e2d719d3c1f0891397bb2fa49afd747cfbf1e8e4"
+  digest = "1:cdb899c199f907ac9fb50495ec71212c95cb5b0e0a8ee0800da0238036091033"
   name = "github.com/mattn/go-runewidth"
   packages = ["."]
   pruneopts = "UT"
-  revision = "9e777a8366cce605130a531d2cd6363d07ad7317"
-  version = "v0.0.2"
+  revision = "ce7b0b5c7b45a81508558cd1dba6bb1e4ddb51bb"
+  version = "v0.0.3"
 
 [[projects]]
   branch = "master"
@@ -76,7 +76,7 @@
   revision = "9ac6cf4d929b2fa8fd2d2e6dec5bb0feb4f4911d"
 
 [[projects]]
-  digest = "1:d2997d9a773171df32642730331692fdf3f98fc51911067b708f92cfdc55708b"
+  digest = "1:ea301a49a83512e674c6bb188c846d2b023166c8ab439c9e63a1adbffe148b88"
   name = "github.com/olivere/elastic"
   packages = [
     ".",
@@ -84,8 +84,8 @@
     "uritemplates",
   ]
   pruneopts = "UT"
-  revision = "e1da71ef4bb6941f2051f5cc1c4d3e56b1978cf3"
-  version = "v6.1.26"
+  revision = "e6cae211ee802eab70248a68fe2cb03b616744c9"
+  version = "v6.2.5"
 
 [[projects]]
   digest = "1:d776f3e95774a8719f2e57fabbbb33103035fe072dcf6f1864f33abd17b753e5"
@@ -117,52 +117,29 @@
   name = "golang.org/x/crypto"
   packages = ["ssh/terminal"]
   pruneopts = "UT"
-  revision = "c126467f60eb25f8f27e5a981f32a87e3965053f"
+  revision = "182538f80094b6a8efaade63a8fd8e0d9d5843dd"
 
 [[projects]]
-  branch = "master"
-  digest = "1:af2bc8584f04302248186214c73d05637fd5718eb9f7d67a82f2efd75c89be45"
+  branch = "release-branch.go1.6"
+  digest = "1:3a580d08068214dfc72d5b797f488563561f123ae30aae8b998400183a7407e9"
   name = "golang.org/x/net"
   packages = [
     "idna",
     "publicsuffix",
   ]
   pruneopts = "UT"
-  revision = "3673e40ba22529d22c3fd7c93e97b0ce50fa7bdd"
+  revision = "62685c2d7ca23c807425dca88b11a3e2323dab41"
 
 [[projects]]
   branch = "master"
-  digest = "1:8742e6e73627b2877c3f723bc1823d5667ec59011242480309dc90fa862512aa"
+  digest = "1:629034aef6b53eb8ea737e6d82cb5402907e2757fbab5ddf5e74c08b4c6473af"
   name = "golang.org/x/sys"
   packages = [
     "unix",
     "windows",
   ]
   pruneopts = "UT"
-  revision = "bd9dbc187b6e1dacfdd2722a87e83093c2d7bd6e"
-
-[[projects]]
-  digest = "1:a2ab62866c75542dd18d2b069fec854577a20211d7c0ea6ae746072a1dccdd18"
-  name = "golang.org/x/text"
-  packages = [
-    "collate",
-    "collate/build",
-    "internal/colltab",
-    "internal/gen",
-    "internal/tag",
-    "internal/triegen",
-    "internal/ucd",
-    "language",
-    "secure/bidirule",
-    "transform",
-    "unicode/bidi",
-    "unicode/cldr",
-    "unicode/norm",
-    "unicode/rangetable",
-  ]
-  pruneopts = "UT"
-  revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
-  version = "v0.3.0"
+  revision = "fa5fdf94c78965f1aa8423f0cc50b8b8d728b05a"
 
 [solve-meta]
   analyzer-name = "dep"
@@ -171,10 +148,10 @@
     "github.com/Sirupsen/logrus",
     "github.com/fatih/structs",
     "github.com/gorilla/mux",
-    "github.com/malice-plugins/go-plugin-utils/clitable",
-    "github.com/malice-plugins/go-plugin-utils/database",
-    "github.com/malice-plugins/go-plugin-utils/database/elasticsearch",
-    "github.com/malice-plugins/go-plugin-utils/utils",
+    "github.com/malice-plugins/pkgs/clitable",
+    "github.com/malice-plugins/pkgs/database",
+    "github.com/malice-plugins/pkgs/database/elasticsearch",
+    "github.com/malice-plugins/pkgs/utils",
     "github.com/parnurzeal/gorequest",
     "github.com/pkg/errors",
     "github.com/urfave/cli",

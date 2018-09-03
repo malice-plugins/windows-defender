@@ -1,0 +1,14 @@
+# malice/windows-defender plugin configuration.
+
+name = 'windows-defender'
+description = 'Malice Windows Defender AntiVirus'
+category = 'av'
+version = '0.1.0'
+
+accepts = [ '*' ]
+
+[system]
+cpu = 0.5
+ram = 256 # MB
+
+[settings]

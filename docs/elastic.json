@@ -1,5 +1,5 @@
 {
-  "took": 47,
+  "took": 44,
   "timed_out": false,
   "_shards": {
     "total": 1,
@@ -8,27 +8,47 @@
     "failed": 0
   },
   "hits": {
-    "total": 1,
+    "total": 2,
     "max_score": 1,
     "hits": [
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "JTiT5GQBpD1ikcLOOs-r",
+        "_id": "aZY5nWUBO3kRWc69QVEG",
         "_score": 1,
         "_source": {
           "plugins": {
             "av": {
               "windows_defender": {
-                "engine": "0.1.0",
+                "engine": "v0.1.0",
                 "infected": true,
-                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor:Win32/Lecna!dha | 0.1.0 | 20180729 |\n",
+                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor:Win32/Lecna!dha | v0.1.0 | 20180903 |\n",
                 "result": "Backdoor:Win32/Lecna!dha",
-                "updated": "20180729"
+                "updated": "20180903"
               }
             }
           },
-          "scan_date": "2018-07-29T05:46:51.426591424Z"
+          "scan_date": "2018-09-03T02:18:19.772036503Z"
+        }
+      },
+      {
+        "_index": "malice",
+        "_type": "samples",
+        "_id": "apY5nWUBO3kRWc69WlH6",
+        "_score": 1,
+        "_source": {
+          "plugins": {
+            "av": {
+              "windows_defender": {
+                "engine": "v0.1.0",
+                "infected": false,
+                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| false |  | v0.1.0 | 20180903 |\n",
+                "result": "",
+                "updated": "20180903"
+              }
+            }
+          },
+          "scan_date": "2018-09-03T02:18:26.424518809Z"
         }
       }
     ]

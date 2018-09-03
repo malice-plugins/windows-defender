@@ -4,7 +4,9 @@
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 [![Docker Stars](https://img.shields.io/docker/stars/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
-[![Docker Image](https://img.shields.io/badge/docker%20image-323MB-blue.svg)](https://store.docker.com/community/images/malice/windows-defender)
+[![Docker Image](https://img.shields.io/badge/docker%20image-349MB-blue.svg)](https://store.docker.com/community/images/malice/windows-defender)
+
+Malice Windows Defender AntiVirus Plugin
 
 > This repository contains a **Dockerfile** of [Windows Defender](https://www.microsoft.com/en-us/windows/windows-defender) for the malice plugin **malice/windows-defender**
 
@@ -14,18 +16,18 @@
 
 - [ubuntu:xenial (_118 MB_\)](https://hub.docker.com/_/ubuntu/)
 
-### Installation
+## Installation
 
-1.  Install [Docker](https://www.docker.io/).
-2.  Download [trusted build](https://store.docker.com/community/images/malice/windows-defender) from public [docker store](https://store.docker.com): `docker pull malice/windows-defender`
+1. Install [Docker](https://www.docker.io/).
+2. Download [trusted build](https://store.docker.com/community/images/malice/windows-defender) from public [docker store](https://store.docker.com): `docker pull malice/windows-defender`
 
-### Usage
+## Usage
 
 ```
 docker run --init --rm malice/windows-defender EICAR
 ```
 
-#### Or link your own malware folder:
+### Or link your own malware folder:
 
 ```bash
 $ docker run --init --rm -v /path/to/malware:/malware:ro malice/windows-defender FILE
@@ -34,25 +36,25 @@ Usage: windows-defender [OPTIONS] COMMAND [arg...]
 
 Malice Windows Defender AntiVirus Plugin
 
-Version: v0.1.0, BuildTime: 20171112
+Version: v0.1.0, BuildTime: 20180903
 
 Author:
   blacktop - <https://github.com/blacktop>
 
 Options:
-  --verbose, -V         verbose output
-  --table, -t	        output as Markdown table
-  --callback, -c	POST results to Malice webhook [$MALICE_ENDPOINT]
-  --proxy, -x	        proxy settings for Malice webhook endpoint [$MALICE_PROXY]
-  --timeout value       malice plugin timeout (in seconds) (default: 60) [$MALICE_TIMEOUT]
-  --elasitcsearch value elasitcsearch address for Malice to store results [$MALICE_ELASTICSEARCH]
-  --help, -h	        show help
-  --version, -v	        print the version
+  --verbose, -V          verbose output
+  --table, -t            output as Markdown table
+  --callback, -c         POST results to Malice webhook [$MALICE_ENDPOINT]
+  --proxy, -x            proxy settings for Malice webhook endpoint [$MALICE_PROXY]
+  --elasticsearch value  elasticsearch url for Malice to store results [$MALICE_ELASTICSEARCH_URL]
+  --timeout value        malice plugin timeout (in seconds) (default: 60) [$MALICE_TIMEOUT]
+  --help, -h             show help
+  --version, -v          print the version
 
 Commands:
-  update	Update virus definitions
-  web           Create a windows-defender scan web service
-  help		Shows a list of commands or help for one command
+  update  Update virus definitions
+  web     Create a Windows Defender scan web service
+  help    Shows a list of commands or help for one command
 
 Run 'windows-defender COMMAND --help' for more information on a command.
 ```

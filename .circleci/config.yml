@@ -3,11 +3,11 @@ jobs:
   build:
     working_directory: /app
     docker:
-      - image: docker:17.10.0-ce
+      - image: docker:18.03.1-ce-git
     steps:
       - checkout
       - setup_remote_docker:
-          version: 17.10.0-ce
+          version: 18.03.1-ce
       - run:
           name: Install dependencies
           command: |
@@ -50,11 +50,25 @@ jobs:
             docker create -v /malware --name malvol alpine:3.8 /bin/true
             docker cp /tmp/sample malvol:/malware
       - run:
-          name: Run tests
+          name: Run test
           command: |
             set -x
             docker run --rm --volumes-from malvol app -V sample | jq .
             docker run --rm --volumes-from malvol app -t sample
+      # - run:
+      #     name: Download samples
+      #     command: |
+      #       docker create -v /malware --name malvol2 --entrypoint=sh malice/alpine /bin/true
+      #       docker run --rm -it --volumes-from malvol2 \
+      #        malice/get-mauled -V malware-samples
+      # - run:
+      #     name: Run tests
+      #     command: |
+      #       set -x
+      #       for file in $(docker run --volumes-from malvol2 alpine ls -1 /malware)
+      #       do
+      #         docker run --rm --volumes-from malvol2 app $file | jq .
+      #       done
       - run:
           name: Run update test
           command: |

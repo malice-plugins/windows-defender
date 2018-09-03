@@ -39,7 +39,7 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/malice-plugins/go-plugin-utils"
+  name = "github.com/malice-plugins/pkgs"
 
 [[constraint]]
   name = "github.com/parnurzeal/gorequest"
