@@ -1,5 +1,5 @@
 {
-  "took": 44,
+  "took": 45,
   "timed_out": false,
   "_shards": {
     "total": 1,
@@ -14,7 +14,7 @@
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "aZY5nWUBO3kRWc69QVEG",
+        "_id": "b-l3rGUB9sZX1XuzPoPE",
         "_score": 1,
         "_source": {
           "plugins": {
@@ -22,19 +22,19 @@
               "windows_defender": {
                 "engine": "v0.1.0",
                 "infected": true,
-                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor:Win32/Lecna!dha | v0.1.0 | 20180903 |\n",
+                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor:Win32/Lecna!dha | v0.1.0 | 20180906 |\n",
                 "result": "Backdoor:Win32/Lecna!dha",
-                "updated": "20180903"
+                "updated": "20180906"
               }
             }
           },
-          "scan_date": "2018-09-03T02:18:19.772036503Z"
+          "scan_date": "2018-09-06T01:20:20.668671767Z"
         }
       },
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "apY5nWUBO3kRWc69WlH6",
+        "_id": "cOl3rGUB9sZX1XuzV4NC",
         "_score": 1,
         "_source": {
           "plugins": {
@@ -42,13 +42,13 @@
               "windows_defender": {
                 "engine": "v0.1.0",
                 "infected": false,
-                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| false |  | v0.1.0 | 20180903 |\n",
+                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| false |  | v0.1.0 | 20180906 |\n",
                 "result": "",
-                "updated": "20180903"
+                "updated": "20180906"
               }
             }
           },
-          "scan_date": "2018-09-03T02:18:26.424518809Z"
+          "scan_date": "2018-09-06T01:20:26.94504399Z"
         }
       }
     ]

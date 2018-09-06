@@ -4,7 +4,7 @@
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 [![Docker Stars](https://img.shields.io/docker/stars/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
-[![Docker Image](https://img.shields.io/badge/docker%20image-349MB-blue.svg)](https://store.docker.com/community/images/malice/windows-defender)
+[![Docker Image](https://img.shields.io/badge/docker%20image-317MB-blue.svg)](https://store.docker.com/community/images/malice/windows-defender)
 
 Malice Windows Defender AntiVirus Plugin
 
@@ -14,7 +14,7 @@ Malice Windows Defender AntiVirus Plugin
 
 ### Dependencies
 
-- [ubuntu:xenial (_118 MB_\)](https://hub.docker.com/_/ubuntu/)
+- [ubuntu:bionic (_84.1 MB_\)](https://hub.docker.com/_/ubuntu/)
 
 ## Installation
 
