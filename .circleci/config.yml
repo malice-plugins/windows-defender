@@ -53,8 +53,8 @@ jobs:
           name: Run test
           command: |
             set -x
-            docker run --rm --volumes-from malvol app -V sample | jq .
-            docker run --rm --volumes-from malvol app -t sample
+            docker run --rm --security-opt seccomp=seccomp/profile.json --volumes-from malvol app -V sample | jq .
+            docker run --rm --security-opt seccomp=seccomp/profile.json --volumes-from malvol app -t sample
       # - run:
       #     name: Download samples
       #     command: |

@@ -27,7 +27,7 @@ tags:
 
 .PHONY: ssh
 ssh:
-	@docker run --init -it --rm -v $(PWD):/malware --entrypoint=bash $(ORG)/$(NAME):$(VERSION)
+	@docker run --init -it --rm --security-opt seccomp=seccomp/profile.json -v $(PWD):/malware --entrypoint=bash $(ORG)/$(NAME):$(VERSION)
 
 .PHONY: tar
 tar:
@@ -45,7 +45,7 @@ ifeq ("$(shell docker inspect -f {{.State.Running}} elasticsearch)", "true")
 	@docker rm -f elasticsearch || true
 endif
 	@echo "===> Starting elasticsearch"
-	@docker run --init -d --name elasticsearch -p 9200:9200 malice/elasticsearch:6.4; sleep 15
+	@docker run --init -d --name elasticsearch -p 9200:9200 malice/elasticsearch:6.5; sleep 15
 
 .PHONY: malware
 malware:
@@ -61,15 +61,15 @@ test_all: test test_elastic test_markdown test_web
 test: malware
 	@echo "===> ${NAME} --help"
 	docker run --init --rm $(ORG)/$(NAME):$(VERSION) --help
-	docker run --init --rm -v $(PWD):/malware $(ORG)/$(NAME):$(VERSION) -V $(MALWARE) | jq . > docs/results.json
+	docker run --init --rm --security-opt seccomp=seccomp/profile.json -v $(PWD):/malware $(ORG)/$(NAME):$(VERSION) -V $(MALWARE) | jq . > docs/results.json
 	cat docs/results.json | jq .
 
 .PHONY: test_elastic
 test_elastic: start_elasticsearch malware
 	@echo "===> ${NAME} test_elastic found"
-	docker run --rm --link elasticsearch -e MALICE_ELASTICSEARCH_URL=http://elasticsearch:9200 -v $(PWD):/malware $(ORG)/$(NAME):$(VERSION) -V $(MALWARE)
+	docker run --rm --link elasticsearch -e MALICE_ELASTICSEARCH_URL=http://elasticsearch:9200 --security-opt seccomp=seccomp/profile.json -v $(PWD):/malware $(ORG)/$(NAME):$(VERSION) -V $(MALWARE)
 	@echo "===> ${NAME} test_elastic NOT found"
-	docker run --rm --link elasticsearch -e MALICE_ELASTICSEARCH_URL=http://elasticsearch:9200 -v $(PWD):/malware $(ORG)/$(NAME):$(VERSION) -V $(NOT_MALWARE)
+	docker run --rm --link elasticsearch -e MALICE_ELASTICSEARCH_URL=http://elasticsearch:9200 --security-opt seccomp=seccomp/profile.json -v $(PWD):/malware $(ORG)/$(NAME):$(VERSION) -V $(NOT_MALWARE)
 	http localhost:9200/malice/_search | jq . > docs/elastic.json
 
 .PHONY: test_markdown
@@ -81,7 +81,7 @@ test_markdown:
 .PHONY: test_web
 test_web: malware stop
 	@echo "===> Starting web service"
-	@docker run -d --name $(NAME) -p 3993:3993 $(ORG)/$(NAME):$(VERSION) web
+	@docker run -d --name $(NAME) -p 3993:3993 --security-opt seccomp=seccomp/profile.json $(ORG)/$(NAME):$(VERSION) web
 	http -f localhost:3993/scan malware@$(MALWARE)
 	@echo "===> Stopping web service"
 	@docker logs $(NAME)
