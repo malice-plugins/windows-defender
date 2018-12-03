@@ -23,8 +23,18 @@ Malice Windows Defender AntiVirus Plugin
 
 ## Usage
 
-```
+### NOTICE :warning:
+
+Something has changed in the latest version of Docker `18.09.0` where we now need to use our own seccomp profile found [here](https://raw.githubusercontent.com/malice-plugins/windows-defender/master/seccomp.json)
+
+```bash
 docker run --init --rm malice/windows-defender EICAR
+```
+
+With seccomp profile
+
+```bash
+docker run --init --rm --security-opt seccomp=seccomp.json malice/windows-defender EICAR
 ```
 
 ### Or link your own malware folder:
