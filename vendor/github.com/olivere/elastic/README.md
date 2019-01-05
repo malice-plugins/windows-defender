@@ -8,6 +8,7 @@ Elastic is an [Elasticsearch](http://www.elasticsearch.org/) client for the
 [![Build Status](https://travis-ci.org/olivere/elastic.svg?branch=release-branch.v6)](https://travis-ci.org/olivere/elastic)
 [![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](http://godoc.org/github.com/olivere/elastic)
 [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/olivere/elastic/master/LICENSE)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Folivere%2Felastic.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Folivere%2Felastic?ref=badge_shield)
 
 See the [wiki](https://github.com/olivere/elastic/wiki) for additional information about Elastic.
 
@@ -129,8 +130,8 @@ Here's a [link to a complete working example for v6](https://gist.github.com/oli
 Here are a few tips on how to get used to Elastic:
 
 1. Head over to the [Wiki](https://github.com/olivere/elastic/wiki) for detailed information and
-   topics like e.g. [how to add a middleware](/olivere/elastic/wiki/HttpTransport)
-   or how to [connect to AWS](/olivere/elastic/wiki/Using-with-AWS-Elasticsearch-Service).
+   topics like e.g. [how to add a middleware](https://github.com/olivere/elastic/wiki/HttpTransport)
+   or how to [connect to AWS](https://github.com/olivere/elastic/wiki/Using-with-AWS-Elasticsearch-Service).
 2. If you are unsure how to implement something, read the tests (all `_test.go` files).
    They not only serve as a guard against changes, but also as a reference.
 3. The [recipes](https://github.com/olivere/elastic/tree/release-branch.v6/recipes)
@@ -287,7 +288,7 @@ The cat APIs are not implemented as of now. We think they are better suited for 
 - [x] Cluster State
 - [x] Cluster Stats
 - [ ] Pending Cluster Tasks
-- [ ] Cluster Reroute
+- [x] Cluster Reroute
 - [ ] Cluster Update Settings
 - [x] Nodes Stats
 - [x] Nodes Info
@@ -358,7 +359,9 @@ The cat APIs are not implemented as of now. We think they are better suited for 
 
 - Snapshot and Restore
   - [x] Repositories
-  - [x] Snapshot
+  - [x] Snapshot get
+  - [x] Snapshot create
+  - [x] Snapshot delete
   - [ ] Restore
   - [ ] Snapshot status
   - [ ] Monitoring snapshot/restore status
@@ -405,3 +408,6 @@ by Joshua Tacoma,
 
 MIT-LICENSE. See [LICENSE](http://olivere.mit-license.org/)
 or the LICENSE file provided in the repository for details.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Folivere%2Felastic.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Folivere%2Felastic?ref=badge_large)

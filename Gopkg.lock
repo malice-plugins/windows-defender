@@ -2,20 +2,20 @@
 
 
 [[projects]]
-  digest = "1:d867dfa6751c8d7a435821ad3b736310c2ed68945d05b50fb9d23aee0540c8cc"
+  digest = "1:87c2e02fb01c27060ccc5ba7c5a407cc91147726f8f40b70cceeedbc52b1f3a8"
   name = "github.com/Sirupsen/logrus"
   packages = ["."]
   pruneopts = "UT"
-  revision = "3e01752db0189b9157070a0e1668a620f9a85da2"
-  version = "v1.0.6"
+  revision = "e1e72e9de974bd926e5c56f83753fba2df402ce5"
+  version = "v1.3.0"
 
 [[projects]]
-  digest = "1:ca82a3b99694824c627573c2a76d0e49719b4a9c02d1d85a2ac91f1c1f52ab9b"
+  digest = "1:af43bdaaf86655a2343f113e9b293bbc16b12099eaeb223982bbe4d4c22ba14d"
   name = "github.com/fatih/structs"
   packages = ["."]
   pruneopts = "UT"
-  revision = "a720dfa8df582c51dee1b36feabb906bde1588bd"
-  version = "v1.0"
+  revision = "4966fc68f5b7593aafa6cbbba2d65ec6e1416047"
+  version = "v1.1.0"
 
 [[projects]]
   digest = "1:c79fb010be38a59d657c48c6ba1d003a8aa651fa56b579d959d74573b7dff8e1"
@@ -34,6 +34,14 @@
   version = "v1.6.2"
 
 [[projects]]
+  digest = "1:0a69a1c0db3591fcefb47f115b224592c8dfa4368b7ba9fae509d5e16cdc95c8"
+  name = "github.com/konsorten/go-windows-terminal-sequences"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "5c8c8bd35d3832f5d134ae1e1e375b69a4d25242"
+  version = "v1.0.1"
+
+[[projects]]
   branch = "master"
   digest = "1:aa3d8d42865c42626b5c1add193692d045b3188b1479f0a0a88690d21fe20083"
   name = "github.com/mailru/easyjson"
@@ -48,7 +56,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:dd9d87c99c559d9f7a13bde1f143c5b8d03edd177bc2d4353d800c71d70250ae"
+  digest = "1:9fbef1fd56490cb42326ebc3b27af6f429dddb5bd416deb669090016b6d77eb2"
   name = "github.com/malice-plugins/pkgs"
   packages = [
     "clitable",
@@ -57,26 +65,26 @@
     "utils",
   ]
   pruneopts = "UT"
-  revision = "8b60ba5208b1f40281d09751d83dafd0e7db6e15"
+  revision = "ac91edd7338644fe8c91a52e569f6f0d4431fdb2"
 
 [[projects]]
-  digest = "1:cdb899c199f907ac9fb50495ec71212c95cb5b0e0a8ee0800da0238036091033"
+  digest = "1:0356f3312c9bd1cbeda81505b7fd437501d8e778ab66998ef69f00d7f9b3a0d7"
   name = "github.com/mattn/go-runewidth"
   packages = ["."]
   pruneopts = "UT"
-  revision = "ce7b0b5c7b45a81508558cd1dba6bb1e4ddb51bb"
-  version = "v0.0.3"
+  revision = "3ee7d812e62a0804a7d0a324e0249ca2db3476d3"
+  version = "v0.0.4"
 
 [[projects]]
-  branch = "master"
   digest = "1:7aefb397a53fc437c90f0fdb3e1419c751c5a3a165ced52325d5d797edf1aca6"
   name = "github.com/moul/http2curl"
   packages = ["."]
   pruneopts = "UT"
   revision = "9ac6cf4d929b2fa8fd2d2e6dec5bb0feb4f4911d"
+  version = "v1.0.0"
 
 [[projects]]
-  digest = "1:ea301a49a83512e674c6bb188c846d2b023166c8ab439c9e63a1adbffe148b88"
+  digest = "1:e9ba3a532b2aedc8f8dcc06e136f794d496be02eb2ab17fb56e4b30152d0cfc1"
   name = "github.com/olivere/elastic"
   packages = [
     ".",
@@ -84,8 +92,8 @@
     "uritemplates",
   ]
   pruneopts = "UT"
-  revision = "e6cae211ee802eab70248a68fe2cb03b616744c9"
-  version = "v6.2.5"
+  revision = "f5738570b28a4b5fab39442e3a5b5ffc599a562c"
+  version = "v6.2.15"
 
 [[projects]]
   digest = "1:d776f3e95774a8719f2e57fabbbb33103035fe072dcf6f1864f33abd17b753e5"
@@ -96,12 +104,12 @@
   version = "v0.2.15"
 
 [[projects]]
-  digest = "1:40e195917a951a8bf867cd05de2a46aaf1806c50cf92eebf4c16f78cd196f747"
+  digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
   name = "github.com/pkg/errors"
   packages = ["."]
   pruneopts = "UT"
-  revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
-  version = "v0.8.0"
+  revision = "ba968bfe8b2f7e042a574c888954fccecfa385b4"
+  version = "v0.8.1"
 
 [[projects]]
   digest = "1:b24d38b282bacf9791408a080f606370efa3d364e4b5fd9ba0f7b87786d3b679"
@@ -113,33 +121,33 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:3f3a05ae0b95893d90b9b3b5afdb79a9b3d96e4e36e099d841ae602e4aca0da8"
+  digest = "1:38f553aff0273ad6f367cb0a0f8b6eecbaef8dc6cb8b50e57b6a81c1d5b1e332"
   name = "golang.org/x/crypto"
   packages = ["ssh/terminal"]
   pruneopts = "UT"
-  revision = "0709b304e793a5edb4a2c0145f281ecdc20838a4"
+  revision = "ff983b9c42bc9fbf91556e191cc8efb585c16908"
 
 [[projects]]
   branch = "master"
-  digest = "1:a412caf33b5d3c7938c28e1e745c10664bd180277b73ab3b34c0c467886f9969"
+  digest = "1:b6a3256ffb6ee9d7e7159c062f57e091c30c19e13ac3c676729baac7d83ecd21"
   name = "golang.org/x/net"
   packages = [
     "idna",
     "publicsuffix",
   ]
   pruneopts = "UT"
-  revision = "161cd47e91fd58ac17490ef4d742dc98bb4cf60e"
+  revision = "927f97764cc334a6575f4b7a1584a147864d5723"
 
 [[projects]]
   branch = "master"
-  digest = "1:0ed1788dc3845fa86e9ade2183538e920adf76fb9f8760e69236fa2cb0d7c9d9"
+  digest = "1:191cccd950a4aeadb60306062f2bdc2f924d750d0156ec6c691b17211bfd7349"
   name = "golang.org/x/sys"
   packages = [
     "unix",
     "windows",
   ]
   pruneopts = "UT"
-  revision = "917fdcba135dcbaccd57425db91723541b4427c8"
+  revision = "badf5585203e739f88c2c6cd34188a6f54b5d619"
 
 [[projects]]
   digest = "1:a2ab62866c75542dd18d2b069fec854577a20211d7c0ea6ae746072a1dccdd18"

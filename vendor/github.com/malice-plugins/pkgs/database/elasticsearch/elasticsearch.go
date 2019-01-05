@@ -338,8 +338,12 @@ func (db *Database) StorePluginResults(results database.PluginResults) error {
 				},
 			},
 		}
-		update, err := client.Update().Index(db.Index).Type(db.Type).Id(getSample.Id).
+		update, err := client.Update().
+			Index(db.Index).
+			Type(db.Type).
+			Id(getSample.Id).
 			Doc(updateScan).
+			Refresh("wait_for").
 			Do(context.Background())
 		if err != nil {
 			return errors.Wrapf(err, "failed to update sample with id: %s", results.ID)
