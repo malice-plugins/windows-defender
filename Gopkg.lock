@@ -56,7 +56,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:9fbef1fd56490cb42326ebc3b27af6f429dddb5bd416deb669090016b6d77eb2"
+  digest = "1:d9572c10b783a951f10abe82e3860b15f9e1515d5474e01212c5203239591784"
   name = "github.com/malice-plugins/pkgs"
   packages = [
     "clitable",
@@ -65,7 +65,7 @@
     "utils",
   ]
   pruneopts = "UT"
-  revision = "ac91edd7338644fe8c91a52e569f6f0d4431fdb2"
+  revision = "79532f02e4f097fe567092b23f36dbfb5477f580"
 
 [[projects]]
   digest = "1:0356f3312c9bd1cbeda81505b7fd437501d8e778ab66998ef69f00d7f9b3a0d7"
@@ -136,18 +136,18 @@
     "publicsuffix",
   ]
   pruneopts = "UT"
-  revision = "927f97764cc334a6575f4b7a1584a147864d5723"
+  revision = "1a61f4433d8505ec66450dd581f6abb8e83cb4d9"
 
 [[projects]]
   branch = "master"
-  digest = "1:191cccd950a4aeadb60306062f2bdc2f924d750d0156ec6c691b17211bfd7349"
+  digest = "1:c4f2af053602f247b8625846cd88dfbf9295e3d02e82c58c27ebe3be06bef80c"
   name = "golang.org/x/sys"
   packages = [
     "unix",
     "windows",
   ]
   pruneopts = "UT"
-  revision = "badf5585203e739f88c2c6cd34188a6f54b5d619"
+  revision = "cb59ee3660675d463e86971646692ea3e470021c"
 
 [[projects]]
   digest = "1:a2ab62866c75542dd18d2b069fec854577a20211d7c0ea6ae746072a1dccdd18"

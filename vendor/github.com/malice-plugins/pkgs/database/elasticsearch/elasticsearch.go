@@ -343,6 +343,7 @@ func (db *Database) StorePluginResults(results database.PluginResults) error {
 			Type(db.Type).
 			Id(getSample.Id).
 			Doc(updateScan).
+			RetryOnConflict(3).
 			Refresh("wait_for").
 			Do(context.Background())
 		if err != nil {
