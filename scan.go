@@ -132,7 +132,7 @@ func ParseWinDefOutput(windefout string, err error) (ResultsData, error) {
 		return ResultsData{}, err
 	}
 
-	windef := ResultsData{Infected: false, Engine: Version}
+	windef := ResultsData{Infected: false, Engine: getWinDefVersion()}
 
 	log.WithFields(log.Fields{
 		"plugin":   strings.Replace(name, "-", "_", -1),
@@ -160,6 +160,22 @@ func ParseWinDefOutput(windefout string, err error) (ResultsData, error) {
 	}
 	windef.Updated = getUpdatedDate()
 	return windef, nil
+}
+
+func getWinDefVersion() string {
+
+	versionOut, err := utils.RunCommand(nil, "/usr/bin/exiftool", "/loadlibrary/engine/mpengine.dll")
+	assert(err)
+
+	log.Debug("Windows Defender Version: ", versionOut)
+	for _, line := range strings.Split(versionOut, "\n") {
+		if len(line) != 0 {
+			if strings.Contains(line, "Product Version Number          :") {
+				return strings.TrimSpace(strings.TrimPrefix(line, "Product Version Number          :"))
+			}
+		}
+	}
+	return "error"
 }
 
 func getUpdatedDate() string {

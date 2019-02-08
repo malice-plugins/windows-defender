@@ -59,6 +59,10 @@ RUN buildDeps='libreadline-dev:i386 \
 RUN apt-get update -qq && apt-get install -yq --no-install-recommends ca-certificates \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Install exiftool for engine version extraction
+RUN apt-get update -qq && apt-get install -yq --no-install-recommends exiftool \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # Add EICAR Test Virus File to malware folder
 ADD http://www.eicar.org/download/eicar.com.txt /malware/EICAR
 
