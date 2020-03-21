@@ -7,11 +7,11 @@ import (
 	"strings"
 	"time"
 
-	log "github.com/Sirupsen/logrus"
 	"github.com/malice-plugins/pkgs/database"
 	"github.com/malice-plugins/pkgs/utils"
 	"github.com/olivere/elastic"
 	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 )
 
 // Database is the elasticsearch malice database object

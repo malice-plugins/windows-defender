@@ -14,7 +14,6 @@ import (
 	"strings"
 	"time"
 
-	log "github.com/Sirupsen/logrus"
 	"github.com/fatih/structs"
 	"github.com/gorilla/mux"
 	"github.com/malice-plugins/pkgs/clitable"
@@ -23,6 +22,7 @@ import (
 	"github.com/malice-plugins/pkgs/utils"
 	"github.com/parnurzeal/gorequest"
 	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 	"github.com/urfave/cli"
 )
 
