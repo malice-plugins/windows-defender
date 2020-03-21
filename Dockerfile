@@ -1,7 +1,7 @@
 ####################################################
 # GOLANG BUILDER
 ####################################################
-FROM golang:1.11 as go_builder
+FROM golang:1 as go_builder
 
 COPY . /go/src/github.com/malice-plugins/windows-defender
 WORKDIR /go/src/github.com/malice-plugins/windows-defender
@@ -36,15 +36,14 @@ RUN buildDeps='libreadline-dev:i386 \
   mercurial \
   git-core \
   unzip \
-  wget' \
+  curl' \
   && set -x \
   && dpkg --add-architecture i386 && apt-get update -qq \
   && apt-get install -y $buildDeps libc6-i386 --no-install-recommends \
   && echo "===> Install taviso/loadlibrary..." \
   && git clone https://github.com/taviso/loadlibrary.git /loadlibrary \
   && echo "===> Download 32-bit antimalware update file.." \
-  && wget --progress=bar:force "https://go.microsoft.com/fwlink/?LinkID=121721&arch=x86" -O \
-  /loadlibrary/engine/mpam-fe.exe \
+  && curl -L --output /loadlibrary/engine/mpam-fe.exe "https://www.microsoft.com/security/encyclopedia/adlpackages.aspx?arch=x86" \
   && cd /loadlibrary/engine \
   && cabextract mpam-fe.exe \
   && rm mpam-fe.exe \
@@ -62,9 +61,6 @@ RUN apt-get update -qq && apt-get install -yq --no-install-recommends ca-certifi
 # Install exiftool for engine version extraction
 RUN apt-get update -qq && apt-get install -yq --no-install-recommends exiftool \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Add EICAR Test Virus File to malware folder
-ADD http://www.eicar.org/download/eicar.com.txt /malware/EICAR
 
 RUN  mkdir -p /opt/malice
 COPY update.sh /opt/malice/update

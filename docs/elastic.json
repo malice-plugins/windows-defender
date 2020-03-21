@@ -1,5 +1,5 @@
 {
-  "took": 45,
+  "took": 74,
   "timed_out": false,
   "_shards": {
     "total": 1,
@@ -14,41 +14,41 @@
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "b-l3rGUB9sZX1XuzPoPE",
+        "_id": "bZjm_XABrFp7lT-HoAiM",
         "_score": 1,
         "_source": {
           "plugins": {
             "av": {
               "windows_defender": {
-                "engine": "v0.1.0",
+                "engine": "1.1.16800.2",
                 "infected": true,
-                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor:Win32/Lecna!dha | v0.1.0 | 20180906 |\n",
+                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor:Win32/Lecna!dha | 1.1.16800.2 | 20200321 |\n",
                 "result": "Backdoor:Win32/Lecna!dha",
-                "updated": "20180906"
+                "updated": "20200321"
               }
             }
           },
-          "scan_date": "2018-09-06T01:20:20.668671767Z"
+          "scan_date": "2020-03-21T16:21:54.9429506Z"
         }
       },
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "cOl3rGUB9sZX1XuzV4NC",
+        "_id": "bpjm_XABrFp7lT-HsQi7",
         "_score": 1,
         "_source": {
           "plugins": {
             "av": {
               "windows_defender": {
-                "engine": "v0.1.0",
+                "engine": "1.1.16800.2",
                 "infected": false,
-                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| false |  | v0.1.0 | 20180906 |\n",
+                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| false |  | 1.1.16800.2 | 20200321 |\n",
                 "result": "",
-                "updated": "20180906"
+                "updated": "20200321"
               }
             }
           },
-          "scan_date": "2018-09-06T01:20:26.94504399Z"
+          "scan_date": "2020-03-21T16:21:59.3543564Z"
         }
       }
     ]

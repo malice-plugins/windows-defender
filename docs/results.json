@@ -2,7 +2,7 @@
   "windows_defender": {
     "infected": true,
     "result": "Backdoor:Win32/Lecna!dha",
-    "engine": "v0.1.0",
-    "updated": "20181201"
+    "engine": "1.1.16800.2",
+    "updated": "20200321"
   }
 }
