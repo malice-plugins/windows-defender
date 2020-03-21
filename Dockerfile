@@ -5,6 +5,7 @@ FROM golang:1 as go_builder
 
 COPY . /go/src/github.com/malice-plugins/windows-defender
 WORKDIR /go/src/github.com/malice-plugins/windows-defender
+RUN go mod download
 RUN go build -ldflags "-s -w -X main.Version=v$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" -o /bin/avscan
 
 ####################################################
