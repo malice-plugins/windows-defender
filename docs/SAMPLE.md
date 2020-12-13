@@ -1,10 +1,10 @@
 #### Windows Defender
 | Infected      | Result      | Engine      | Updated      |
 |:-------------:|:-----------:|:-----------:|:------------:|
-| true | Backdoor:Win32/Lecna!dha | 1.1.16800.2 | 20200321 |
+| true | Backdoor:Win32/Lecna!dha | 1.1.17700.4 | 20201213 |
 
 #### Windows Defender
 | Infected      | Result      | Engine      | Updated      |
 |:-------------:|:-----------:|:-----------:|:------------:|
-| false |  | 1.1.16800.2 | 20200321 |
+| false |  | 1.1.17700.4 | 20201213 |
 

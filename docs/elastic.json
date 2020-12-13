@@ -1,5 +1,5 @@
 {
-  "took": 84,
+  "took": 36,
   "timed_out": false,
   "_shards": {
     "total": 1,
@@ -14,41 +14,41 @@
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "rVBT_nABEeBR8vh4j-tI",
+        "_id": "9hFXXnYBe6yiASX7wZ3J",
         "_score": 1,
         "_source": {
           "plugins": {
             "av": {
               "windows_defender": {
-                "engine": "1.1.16800.2",
+                "engine": "1.1.17700.4",
                 "infected": true,
-                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor:Win32/Lecna!dha | 1.1.16800.2 | 20200321 |\n",
+                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor:Win32/Lecna!dha | 1.1.17700.4 | 20201213 |\n",
                 "result": "Backdoor:Win32/Lecna!dha",
-                "updated": "20200321"
+                "updated": "20201213"
               }
             }
           },
-          "scan_date": "2020-03-21T18:20:53.9453486Z"
+          "scan_date": "2020-12-13T23:02:58.2439986Z"
         }
       },
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "rlBT_nABEeBR8vh4oevG",
+        "_id": "9xFXXnYBe6yiASX7053E",
         "_score": 1,
         "_source": {
           "plugins": {
             "av": {
               "windows_defender": {
-                "engine": "1.1.16800.2",
+                "engine": "1.1.17700.4",
                 "infected": false,
-                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| false |  | 1.1.16800.2 | 20200321 |\n",
+                "markdown": "#### Windows Defender\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| false |  | 1.1.17700.4 | 20201213 |\n",
                 "result": "",
-                "updated": "20200321"
+                "updated": "20201213"
               }
             }
           },
-          "scan_date": "2020-03-21T18:20:58.6927908Z"
+          "scan_date": "2020-12-13T23:03:02.851431729Z"
         }
       }
     ]
