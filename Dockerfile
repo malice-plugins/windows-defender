@@ -39,7 +39,7 @@ RUN buildDeps='libreadline-dev:i386 \
   curl' \
   && set -x \
   && dpkg --add-architecture i386 && apt-get update -qq \
-  && apt-get install -y $buildDeps libc6-i386 --no-install-recommends \
+  && apt-get install -o APT::Immediate-Configure=false -y $buildDeps libc6-i386 --no-install-recommends \
   && echo "===> Install taviso/loadlibrary..." \
   && git clone https://github.com/taviso/loadlibrary.git /loadlibrary \
   && echo "===> Download 32-bit antimalware update file.." \
