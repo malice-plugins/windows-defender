@@ -67,6 +67,9 @@ COPY update.sh /opt/malice/update
 
 COPY --from=go_builder /bin/avscan /bin/avscan
 
+# Add EICAR Test Virus File to malware folder
+ADD http://www.eicar.org/download/eicar.com.txt /malware/EICAR
+
 WORKDIR /malware
 
 ENTRYPOINT ["/bin/avscan"]
