@@ -1,6 +1,6 @@
 # windows-defender
 
-[![Circle CI](https://circleci.com/gh/malice-plugins/windows-defender.png?style=shield)](https://circleci.com/gh/malice-plugins/windows-defender)
+[![Publish Docker Image](https://github.com/malice-plugins/windows-defender/actions/workflows/docker-image.yml/badge.svg)](https://github.com/malice-plugins/windows-defender/actions/workflows/docker-image.yml)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 [![Docker Stars](https://img.shields.io/docker/stars/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
