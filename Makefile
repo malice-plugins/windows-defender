@@ -27,7 +27,7 @@ tags:
 
 .PHONY: ssh
 ssh:
-	@docker run --init -it --rm --security-opt seccomp=seccomp.json -v $(PWD):/malware --entrypoint=bash $(ORG)/$(NAME):$(VERSION)
+	DOCKER_DEFAULT_PLATFORM=linux/amd64 docker run --init -it --rm --security-opt seccomp=seccomp.json -v $(PWD):/malware --entrypoint=bash $(ORG)/$(NAME):$(VERSION)
 	# @docker run --init -it --rm --security-opt seccomp:unconfined -v $(PWD):/malware --entrypoint=bash $(ORG)/$(NAME):$(VERSION)
 
 .PHONY: tar
@@ -61,8 +61,8 @@ test_all: test test_elastic test_markdown test_web
 .PHONY: test
 test: malware
 	@echo "===> ${NAME} --help"
-	docker run --init --rm $(ORG)/$(NAME):$(VERSION) --help
-	docker run --init --rm --security-opt seccomp=seccomp.json -v $(PWD):/malware $(ORG)/$(NAME):$(VERSION) -V $(MALWARE) | jq . > docs/results.json
+	DOCKER_DEFAULT_PLATFORM=linux/amd64 docker run --init --rm $(ORG)/$(NAME):$(VERSION) --help
+	DOCKER_DEFAULT_PLATFORM=linux/amd64 docker run --init --rm --security-opt seccomp=seccomp.json -v $(PWD):/malware $(ORG)/$(NAME):$(VERSION) -V $(MALWARE) | jq . > docs/results.json
 	cat docs/results.json | jq .
 
 .PHONY: test_elastic

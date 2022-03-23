@@ -1,17 +1,16 @@
 ####################################################
 # GOLANG BUILDER
 ####################################################
-FROM golang:1 as go_builder
+FROM --platform=linux/amd64 golang:1 as go_builder
 
 COPY . /go/src/github.com/malice-plugins/windows-defender
 WORKDIR /go/src/github.com/malice-plugins/windows-defender
-RUN go mod download
 RUN go build -ldflags "-s -w -X main.Version=v$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" -o /bin/avscan
 
 ####################################################
 # PLUGIN BUILDER
 ####################################################
-FROM ubuntu:focal
+FROM --platform=linux/amd64 ubuntu:focal
 
 LABEL maintainer "https://github.com/blacktop"
 
@@ -39,11 +38,12 @@ RUN buildDeps='libreadline-dev:i386 \
   curl' \
   && set -x \
   && dpkg --add-architecture i386 && apt-get update -qq \
-  && apt-get install -y $buildDeps libc6-i386 --no-install-recommends \
+  && apt-get install -o APT::Immediate-Configure=false -y $buildDeps libc6-i386 --no-install-recommends \
   && echo "===> Install taviso/loadlibrary..." \
   && git clone https://github.com/taviso/loadlibrary.git /loadlibrary \
   && echo "===> Download 32-bit antimalware update file.." \
-  && curl -L --output /loadlibrary/engine/mpam-fe.exe "https://www.microsoft.com/security/encyclopedia/adlpackages.aspx?arch=x86" \
+  && curl -L --output /loadlibrary/engine/mpam-fe.exe "http://download.microsoft.com/download/DefinitionUpdates/mpam-fe.exe" \
+  # && curl -L --output /loadlibrary/engine/mpam-fe.exe "https://www.microsoft.com/security/encyclopedia/adlpackages.aspx?arch=x86" \
   && cd /loadlibrary/engine \
   && cabextract mpam-fe.exe \
   && rm mpam-fe.exe \
