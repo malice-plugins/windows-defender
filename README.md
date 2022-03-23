@@ -4,7 +4,7 @@
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 [![Docker Stars](https://img.shields.io/docker/stars/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/windows-defender.svg)](https://store.docker.com/community/images/malice/windows-defender)
-[![Docker Image](https://img.shields.io/badge/docker%20image-297MB-blue.svg)](https://store.docker.com/community/images/malice/windows-defender)
+[![Docker Image](https://img.shields.io/badge/docker%20image-285MB-blue.svg)](https://store.docker.com/community/images/malice/windows-defender)
 
 Malice Windows Defender AntiVirus Plugin
 
@@ -125,4 +125,4 @@ Made possible by the awesome work by [@taviso](https://github.com/taviso/loadlib
 
 ## License
 
-MIT Copyright (c) 2017 **blacktop**
+MIT Copyright (c) 2022 **blacktop**
