@@ -40,7 +40,7 @@ docker run --init --rm --security-opt seccomp=seccomp.json malice/windows-defend
 ### Or link your own malware folder:
 
 ```bash
-$ docker run --init --rm -v /path/to/malware:/malware:ro malice/windows-defender FILE
+$ docker run --init --rm -v /path/to/malware:/malware malice/windows-defender FILE
 
 Usage: windows-defender [OPTIONS] COMMAND [arg...]
 
