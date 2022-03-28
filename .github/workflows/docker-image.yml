@@ -52,5 +52,5 @@ jobs:
       -
         name: Test
         run: |
-          apt install -y jq
+          sudo apt install -y jq
           make test
